@@ -83,10 +83,8 @@ def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
             print_log('active', whoami, 'Inference', 'Received Weight File{}'.format(image_png))
             
             files = get_json_file_for_inference(whoami, image_png, file_png, weight_h5, file_h5)
-            return "GOOD"
             
-            response.status_code == 200
-            #response = requests.post(url, files=files)
+            response = requests.post(url, files=files)
 
             if response.status_code == 200 :
                 print_log('active', whoami, 'Inference', 'Succeed to receive Data from AI')
