@@ -2,9 +2,9 @@ from flask import Flask, jsonify
 from AEYE_AI.config import opticnet_config
 
 def aeye_opticnet_framework(aeye: Flask):
-    from AEYE_APPLICATION.AEYE_AOT import api
+    from AEYE_APPLICATION.AEYE_AOT import api_aot
     
-    aeye.register_blueprint(api)
+    aeye.register_blueprint(api_aot)
 
     @aeye.before_request
     def before_my_request():
