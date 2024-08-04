@@ -12,15 +12,15 @@ def print_log(status, whoami, operation, message) :
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
     if status == "active" :
-                             print("\n-----------------------------------------\n"   + 
-                                   current_time + whoami + "[ " + operation + " ]\n" +  
-                                   Fore.GREEN + "[OpticNet - active] [ "+ message +" ]" + Fore.RESET +
-                                   "\n-----------------------------------------")
+        print("\n-----------------------------------------\n"   + 
+              current_time + " " + whoami + Fore.BLUE + "[ " + operation + " ]\n" +  Fore.RESET +
+              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
     elif status == "error" :
-                             print("\n-----------------------------------------\n"   + 
-                                   current_time + whoami + "[ " + operation + " ]\n" +  
-                                   Fore.RED + "[OpticNet - error] [ "+ message +" ]" + Fore.RESET +
-                                   "\n-----------------------------------------")
+        print("\n-----------------------------------------\n"   + 
+              current_time + " " + whoami + Fore.BLUE + "[ " + operation + " ]\n" +  Fore.RESET +
+              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
 
     '''
     if status == "active" :
@@ -71,40 +71,41 @@ def aeye_ai_operation_toolkit() :
 
 def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
     url = 'http://localhost:5000/hal/ai-inference/'
-
+    inference_aot = "AOT - Inference"    
+    
     if weight_file:
         weight_h5 = secure_filename(weight_file.filename)
         file_h5 = weight_file.read()
-        print_log('active', whoami, 'Inference', 'Received Weight File{}'.format(weight_h5))
+        print_log('active', whoami, inference_aot, 'Received Weight File: {}'.format(weight_h5))
 
         if image_file:
             image_png = secure_filename(image_file.filename)
             file_png = image_file.read()
-            print_log('active', whoami, 'Inference', 'Received Weight File{}'.format(image_png))
+            print_log('active', whoami, inference_aot, 'Received Image File: {}'.format(image_png))
             
             files = get_json_file_for_inference(whoami, image_png, file_png, weight_h5, file_h5)
             
             response = requests.post(url, files=files)
 
             if response.status_code == 200 :
-                print_log('active', whoami, 'Inference', 'Succeed to receive Data from AI')
+                print_log('active', whoami, inference_aot, 'Succeed to receive Data from AI')
                 return response
 
             elif response.status_code == 400 :
-                print_log('error', whoami, 'Inference', 'Failed to receive Data from AI')
+                print_log('error', whoami, inference_aot, 'Failed to receive Data from AI')
                 return jsonify({"error": "Failed Operating AI Inference"}), 400
             else:
-                print_log('error', whoami, 'Inference', 'Failed to receive Data from AI')
+                print_log('error', whoami, inference_aot, 'Failed to receive Data from AI')
                 return jsonify({"error": "Failed Operating AI Inference"}), 400
             
             
             
         else:
-            print_log('error', whoami, 'Inference', 'No Image file uploaded')
+            print_log('error', whoami, inference_aot, 'No Image file uploaded')
             return jsonify({"error": "Invalid operation"}), 400
 
     else:
-        print_log('error', whoami, 'Inference', 'No Weight file uploaded.')
+        print_log('error', whoami, inference_aot, 'No Weight file uploaded.')
         return jsonify({"error": "Invalid operation"}), 400
 
 
