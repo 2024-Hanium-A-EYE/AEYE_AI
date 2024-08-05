@@ -8,18 +8,18 @@ from AEYE_HAL.AEYE_Driver import inference
 
 hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 
-def print_log(status, whoami, operation, message) :
+def print_log(status, whoami, hal, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
     if status == "active" :
         print("\n-----------------------------------------\n"   + 
-              current_time + " " + whoami + Fore.BLUE + "[ " + operation + " ]\n" +  Fore.RESET +
+              current_time + " " + whoami + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         print("\n-----------------------------------------\n"   + 
-              current_time + " " + whoami + Fore.BLUE + "[ " + operation + " ]\n" +  Fore.RESET +
+              current_time + " " + whoami + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
         
