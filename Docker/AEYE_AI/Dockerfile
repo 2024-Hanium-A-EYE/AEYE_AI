@@ -23,8 +23,15 @@ RUN pip install colorama
 # Copy Files
 WORKDIR /app/
 COPY /AEYE_AI/ /app/
+
 COPY /Docker/AEYE_AI/dependencies.txt /app/
 RUN pip install -r dependencies.txt
+
+#############################################################
+# Set Environment
+
+ENV PYTHONPATH "${PYTHONPATH}:/app/AEYE_AI"
+
 #############################################################
 # Cleaning
 

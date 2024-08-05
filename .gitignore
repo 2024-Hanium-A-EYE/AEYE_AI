@@ -1,3 +1,7 @@
 /AEYE_Network_Operator/mw/views/weight/*.h5
 /AEYE_Network_Operator/media/images/*
-
+/AEYE_Network_Operator/__pycache__/*
+/AEYE_Network_Operator/AEYE/__pycache__/*
+/AEYE_Network_Operator/AEYE/AEYE_APPLICATION/__pycache__/*
+/AEYE_Network_Operator/AEYE/AEYE_HAL/__pycache__/*
+/AEYE_Network_Operator/AEYE/config/__pycache__/*
