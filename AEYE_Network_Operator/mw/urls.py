@@ -6,7 +6,7 @@ from .views.AEYE_Inference import aeye_inference_Viewswets
 
 router = DefaultRouter()
 
-router.register(r'ai-inference/', aeye_inference_Viewswets)
+router.register(r'ai-inference', aeye_inference_Viewswets)
 
 
 urlpatterns = [

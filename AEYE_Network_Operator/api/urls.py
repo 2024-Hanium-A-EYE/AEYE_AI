@@ -6,7 +6,7 @@ from .views.AEYE_ANO import aeye_ano_Viewsets
 
 router = DefaultRouter()
 
-router.register(r'ai-network-operator/', aeye_ano_Viewsets)
+router.register(r'ai-network-operator', aeye_ano_Viewsets)
 
 
 urlpatterns = [

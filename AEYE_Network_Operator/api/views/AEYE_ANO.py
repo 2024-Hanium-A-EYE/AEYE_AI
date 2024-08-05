@@ -5,7 +5,7 @@ from rest_framework import status
 from .models import aeye_ano_models
 from .serializers import aeye_ano_serializers
 from colorama import Fore, Back, Style
-import datetime
+from datetime import datetime
 import requests
 
 def print_log(status, whoami, api, message) :

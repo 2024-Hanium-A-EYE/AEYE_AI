@@ -46,8 +46,9 @@ def aeye_ai_operation_toolkit() :
     image_file  = request.files.get('image')      # option
     weight_file = request.files.get('weight')     # option
 
+    
     # print log
-    print_log('active', whoami, operation, "Client Requested AEYE AOT")
+    print_log('active', whoami, "AOT - Inference", "Client Requested AEYE AOT")
 
     if operation == 'Inference' :
         response = aeye_ai_inference_reqeuest(whoami, image_file, weight_file)
@@ -70,7 +71,7 @@ def aeye_ai_operation_toolkit() :
 
 
 def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
-    url = 'http://127.0.0.1:6000/hal/ai-inference/'
+    url = 'http://127.0.0.1:2000/hal/ai-inference/'
     inference_aot = "AOT - Inference"    
     
     if weight_file:
@@ -88,9 +89,10 @@ def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
             response = requests.post(url, data=data, files=files)
 
             if response.status_code == 200 :
-                print_log('active', whoami, inference_aot, 'Succeed to receive Data from AI')
-                return "GOOD"
-                #return response
+
+
+                print_log('active', whoami, inference_aot, 'Succeed to Send Data To Client')
+                return jsonify({"whoami": 'OpticNet AOT', 'message' : "Succeed to receive Data from AI"}), 200
 
             elif response.status_code == 400 :
                 print_log('error', whoami, inference_aot, 'Failed to receive Data from AI')

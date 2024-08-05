@@ -6,7 +6,7 @@ from .models import aeye_inference_models
 from .serializers import aeye_inference_serializers
 from .forms import aeye_image_form
 from colorama import Fore, Back, Style
-import datetime
+from datetime import datetime
 import requests
 import os
 
@@ -27,7 +27,7 @@ def print_log(status, whoami, mw, message) :
 
 mw = 'MW - Inference'
 
-url = 'opticnet_container:5000/api/ai-toolkit/'
+url = 'http://127.0.0.1:2000/api/ai-toolkit/'
 class aeye_inference_Viewswets(viewsets.ModelViewSet):
     queryset=aeye_inference_models.objects.all().order_by('id')
     serializer_class=aeye_inference_serializers
@@ -57,7 +57,7 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
 
 
 def aeye_ai_inference_request(image, url):
-
+    whoami = 'AEYE NetOper MW Inference'
     files = aeye_create_json_files(whoami, image)
     data = {
         'whoami' : 'AEYE NetOper MW Inference',
@@ -66,20 +66,29 @@ def aeye_ai_inference_request(image, url):
     }
 
     if files!=400:
+        print_log('active', whoami, mw, "Send Data to : {}".format(url))
         response = requests.post(url, data=data, files=files)
 
         if response.status_code==200:
             response_data = response.json()
-            whoami, message = aeye_get_data_from_response(response_data)
+            print_log('active', whoami, mw, "Received Data from the Server : {}".format(response_data))
+            #whoami, message = aeye_get_data_from_response(response_data)
+            whoami  = response_data.get('whoami')
+            message = response_data.get('message')
             
             print_log('active', whoami, mw, "Succedd to Receive Data : {}".format(message) )
-            return response
+            data = aeye_create_json_data(message)
+
+            return  Response(data, status=status.HTTP_200_OK)
         else:
             print_log('error', whoami, mw, "Failed to Receive Data : {}".format(message) )
+
             message = "Failed to Get Response For the Server"
             data = aeye_create_json_data(message)
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
     else:
+        print_log('error', whoami, mw, "Failed to Create Data : {}".format(files) )
+
         message = "Failed to Add image and files to Json files"
         data = aeye_create_json_data(message)
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
@@ -88,18 +97,19 @@ def aeye_ai_inference_request(image, url):
 def aeye_create_json_files(whoami, image):
     
     h5_file_path = os.path.join(os.path.dirname(__file__), 'weight', 'Srinivasan2014.h5')
-            
-    with open(h5_file_path, 'rb') as h5_file:
-        if h5_file:
-            files = {
-                    'image': (image.name, image.read(), image.content_type),
-                    'model': ('model.h5', h5_file, 'application/octet-stream'),
-            }
-            print_log('active', whoami, mw, "Succeed to add image and h5 files to Json files")
-            return files
-        else:
-            print_log('error', whoami, mw, "Failed to add image and h5 files to Json files")
-            return 400
+
+    try:
+        h5_file = open(h5_file_path, 'rb')
+        files = {
+            'image': (image.name, image.read(), image.content_type),
+            'weight': ('model.h5', h5_file, 'application/octet-stream'),
+        }
+        print_log('active', whoami, mw, "Succeeded to add image and h5 files to JSON files")
+        return files
+    except Exception as e:
+        print_log('error', whoami, mw, "Failed to add image and h5 files to JSON files: {}".format(str(e)))
+        return 400
+
 
 def aeye_get_data_from_response(reponse):
     response_data = reponse.json()

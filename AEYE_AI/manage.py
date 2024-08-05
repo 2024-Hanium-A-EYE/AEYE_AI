@@ -16,4 +16,4 @@ def start_framework(host, port, debug):
 
 
 if __name__ == "__main__":
-    framework.run(host='0.0.0.0', port=6000, debug=True)
+    framework.run(host='0.0.0.0', port=2000, debug=True)
