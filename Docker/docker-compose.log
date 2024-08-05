@@ -1,0 +1,19 @@
+time="2024-08-05T23:56:36+09:00" level=warning msg="/home/yoonchcul/Documents/Hanium_2024/AEYE_AI/develop/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container network_operator_container  Creating
+ Container opticnet_container  Creating
+ Container opticnet_container  Created
+ Container network_operator_container  Created
+Attaching to network_operator_container, opticnet_container
+opticnet_container          |   File "manage.py", line 12
+opticnet_container          |     click.echo(f"[AI - Opticnet] Initialize Framework on host {host} and port {port}...")
+opticnet_container          |                                                                                        ^
+opticnet_container          | SyntaxError: invalid syntax
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 14:56:37
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+[Kopticnet_container exited with code 1

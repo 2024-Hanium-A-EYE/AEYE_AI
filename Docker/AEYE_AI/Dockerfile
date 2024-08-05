@@ -1,3 +1,10 @@
+#############################################################
+# AEYE AI OpticNet DockerFile
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
+
 FROM tensorflow/tensorflow:1.12.0-rc1-gpu-py3
 
 
@@ -15,8 +22,9 @@ RUN pip install colorama
 #############################################################
 # Copy Files
 WORKDIR /app/
-COPY ../../AI/ /app/
-
+COPY /AEYE_AI/ /app/
+COPY /Docker/AEYE_AI/dependencies.txt /app/
+RUN pip install -r dependencies.txt
 #############################################################
 # Cleaning
 
@@ -27,5 +35,5 @@ EXPOSE 2000
 EXPOSE 8888
 # CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=5000", "--no-browser", "--allow-root"]
 
-CMD ["python", "run.py", "--p", "2000"]
+CMD ["python", "run.py"]
 

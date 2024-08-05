@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  backend:
+  AEYE-NetOper:
     image: aeye_network_operator:1.0
     container_name: network_operator_container
     build:
@@ -15,7 +15,7 @@ services:
       - ai_network
     command: python manage.py runserver 0.0.0.0:3000
     
-  ai:
+  AEYE-OpticNet:
     image: aeye_opticnet:1.0
     container_name: opticnet_container
     build:

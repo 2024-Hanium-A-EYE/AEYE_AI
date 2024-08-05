@@ -1,10 +1,17 @@
-FROM python:3.6-slim
+#############################################################
+# AEYE AI Network Operator DockerFile
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
+
+FROM python:3.8-slim
 
 
 #############################################################
 # Install Dependencies
 WORKDIR /app
-COPY dependencies_AI.txt /app/
+COPY /Docker/AEYE_Network_Operator/dependencies.txt /app/
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -13,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
-RUN pip install -r dependencies_AI.txt
+RUN pip install -r dependencies.txt
 
 
 #############################################################
@@ -23,7 +30,7 @@ RUN pip install -r dependencies_AI.txt
 # Copy DIR
 WORKDIR /app/
 
-COPY ../../AEYE_Network_Operator/ /app/
+COPY /AEYE_Network_Operator/ /app/
 
 #############################################################
 # Result
