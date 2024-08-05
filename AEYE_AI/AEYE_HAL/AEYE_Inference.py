@@ -116,7 +116,7 @@ def aeye_delete_buffer(whoami, file_name, tmp_file_path):
         print_log('active', whoami, inference_hal, "Deleted Temporary File : {}"
                                                                     .format(file_name))
     except OSError as e:
-        print(f"Error: {e.strerror}")
+        print("Error: {}".format(e.strerror))
         print_log('active', whoami, inference_hal, "Deleted Temporary File : {}"
                                                                     .format(file_name))
 

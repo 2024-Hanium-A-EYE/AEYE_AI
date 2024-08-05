@@ -1,4 +1,4 @@
-#!/Users/yoonchulchung/Documents/2024Hanium/AI/develop/AEYE_AI/venv/bin/python3
+#!/home/yoonchcul/Documents/Hanium_2024/AEYE_AI/develop/AEYE_AI/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

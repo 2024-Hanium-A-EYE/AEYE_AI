@@ -19,18 +19,21 @@ RUN pip install opencv-python
 RUN pip install Flask==1.1.4
 RUN pip install colorama
 
+RUN apt-get update
+RUN apt-get install -y libgl1-mesa-glx --fix-missing
+
 #############################################################
 # Copy Files
-WORKDIR /app/
-COPY /AEYE_AI/ /app/
+WORKDIR /app/AEYE_AI
+COPY /AEYE_AI/ /app/AEYE_AI/
 
-COPY /Docker/AEYE_AI/dependencies.txt /app/
+COPY /Docker/AEYE_AI/dependencies.txt /app/AEYE_AI
 RUN pip install -r dependencies.txt
 
 #############################################################
 # Set Environment
 
-ENV PYTHONPATH "${PYTHONPATH}:/app/AEYE_AI"
+ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 #############################################################
 # Cleaning
@@ -42,5 +45,5 @@ EXPOSE 2000
 EXPOSE 8888
 # CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=5000", "--no-browser", "--allow-root"]
 
-CMD ["python", "run.py"]
+CMD ["python", "manage.py"]
 

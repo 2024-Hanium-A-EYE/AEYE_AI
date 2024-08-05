@@ -21,14 +21,14 @@ services:
     build:
       context: ..
       dockerfile: Docker/AEYE_AI/Dockerfile
-    environment:
-        - PYTHONPATH=/app/AEYE_AI
     ports:
     - "2000:2000"
     - "6006:6006"
     - "8888:8888"
     volumes:
-    - ../AEYE_AI/:/app/
+    - ../AEYE_AI/:/app/AEYE_AI/
+    environment:
+        - PYTHONPATH=/app/
     networks:
       - ai_network
     command: python manage.py
