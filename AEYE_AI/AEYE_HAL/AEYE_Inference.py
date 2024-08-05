@@ -38,10 +38,8 @@ def aeye_ai_inference() :
                                             .format(image_file.filename, weight_file.filename))        
         tmp_image_file_path, tmp_weight_file_path = aeye_create_buffer(whoami, image_file, weight_file)
 
-        tmp_image = aeye_open_data(whoami, image_file.filename, tmp_image_file_path)
-        tmp_weight = aeye_open_data(whoami, weight_file.filename, tmp_weight_file_path)
         print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
-        response = aeye_ai_inference_reqeuest(whoami, tmp_image, tmp_weight)
+        response = aeye_ai_inference_reqeuest(whoami, tmp_image_file_path, tmp_weight_file_path)
         print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
                                                                                 .format(response))  
 
@@ -73,11 +71,11 @@ def check_valid_data(whoami, image_file, weight_file):
         return 400
 
 
-def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
+def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
     
-    if image_file:
+    if image_file_path:
 
-        if weight_file:
+        if weight_file_path:
             
             #response = inference.inference(image_file, weight_file, 'Srinivasan2014')
             #return response
@@ -122,16 +120,3 @@ def aeye_delete_buffer(whoami, file_name, tmp_file_path):
         print_log('active', whoami, inference_hal, "Deleted Temporary File : {}"
                                                                     .format(file_name))
 
-
-def aeye_open_data(whoami, file_name, tmp_file_path) :
-    with open(tmp_file_path, 'rb') as file:
-        data = file.read()
-
-    if data :
-        print_log('active', whoami, inference_hal, "Opened Temporary File : {}"
-                                                                    .format(file_name))
-    else:
-        print_log('error', whoami, inference_hal, "Failed to Open Temporary File : {}"
-                                                                    .format(file_name))
-
-    return data
