@@ -83,13 +83,14 @@ def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
             file_png = image_file.read()
             print_log('active', whoami, inference_aot, 'Received Image File: {}'.format(image_png))
             
-            files = get_json_file_for_inference(whoami, image_png, file_png, weight_h5, file_h5)
+            files, data = get_json_file_for_inference(whoami, image_png, file_png, weight_h5, file_h5)
             
-            response = requests.post(url, files=files)
+            response = requests.post(url, data=data, files=files)
 
             if response.status_code == 200 :
                 print_log('active', whoami, inference_aot, 'Succeed to receive Data from AI')
-                return response
+                return "GOOD"
+                #return response
 
             elif response.status_code == 400 :
                 print_log('error', whoami, inference_aot, 'Failed to receive Data from AI')
@@ -111,12 +112,15 @@ def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
 
 def get_json_file_for_inference(whoami, image_name, image_file, weight_name, weight_file) :
     files = {
-        'whoami' : whoami,
         'image' : (image_name, io.BytesIO(image_file), 'image/jpeg'),
         'weight' : (weight_name, io.BytesIO(weight_file), 'application/octet-stream')
     }
 
-    return files
+    data = {
+        'whoami' : whoami,
+    }
+
+    return files, data
 
 def aeye_ai_test_request(whoami, message):
     pass

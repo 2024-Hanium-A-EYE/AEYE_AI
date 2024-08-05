@@ -48,7 +48,7 @@ def aeye_ai_inference() :
         aeye_delete_buffer(whoami, image_file.filename, tmp_image_file_path)
         aeye_delete_buffer(whoami, image_file.filename, tmp_weight_file_path)
 
-        return response
+        return response, 200
 
     else:
         print_log('error', whoami, inference_hal, 'Received Invalid valid_data {}, {}'
