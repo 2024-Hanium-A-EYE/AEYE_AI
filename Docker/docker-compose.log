@@ -215,3 +215,999 @@ network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/req
 network_operator_container  |     raise InvalidSchema(f"No connection adapters were found for {url!r}")
 network_operator_container  | requests.exceptions.InvalidSchema: No connection adapters were found for '127.0.0.1:3000/mw/ai-inference/'
 network_operator_container  | [05/Aug/2024 16:30:09] "POST /api/ai-network-operator/ HTTP/1.1" 500 133206
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:34:25] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:35:01] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+opticnet_container          |  * Detected change in '/app/AEYE_AI/AEYE_HAL/AEYE_Inference.py', reloading
+opticnet_container          |  * Restarting with stat
+opticnet_container          | Using TensorFlow backend.
+opticnet_container          |  * Debugger is active!
+opticnet_container          |  * Debugger PIN: 273-217-641
+opticnet_container          |  * Detected change in '/app/AEYE_AI/AEYE_HAL/AEYE_Inference.py', reloading
+opticnet_container          |  * Restarting with stat
+opticnet_container          | Using TensorFlow backend.
+opticnet_container          |  * Debugger is active!
+opticnet_container          |  * Debugger PIN: 273-217-641
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:36:12] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:36:16 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 46, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 77, in aeye_ai_inference_request
+network_operator_container  |     response = requests.post(url, data=data, files=files)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/api.py", line 115, in post
+network_operator_container  |     return request("post", url, data=data, json=json, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+network_operator_container  |     return session.request(method=method, url=url, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+network_operator_container  |     resp = self.send(prep, **send_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 697, in send
+network_operator_container  |     adapter = self.get_adapter(url=request.url)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 792, in get_adapter
+network_operator_container  |     raise InvalidSchema(f"No connection adapters were found for {url!r}")
+network_operator_container  | requests.exceptions.InvalidSchema: No connection adapters were found for '127.0.0.1:3000/mw/ai-inference/'
+network_operator_container  | [05/Aug/2024 16:36:16] "POST /api/ai-network-operator/ HTTP/1.1" 500 133206
+opticnet_container          |  * Detected change in '/app/AEYE_AI/AEYE_HAL/AEYE_Inference.py', reloading
+opticnet_container          |  * Restarting with stat
+opticnet_container          | Using TensorFlow backend.
+opticnet_container          |  * Debugger is active!
+opticnet_container          |  * Debugger PIN: 273-217-641
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:37:18 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 46, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 77, in aeye_ai_inference_request
+network_operator_container  |     response = requests.post(url, data=data, files=files)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/api.py", line 115, in post
+network_operator_container  |     return request("post", url, data=data, json=json, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+network_operator_container  |     return session.request(method=method, url=url, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+network_operator_container  |     resp = self.send(prep, **send_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 697, in send
+network_operator_container  |     adapter = self.get_adapter(url=request.url)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 792, in get_adapter
+network_operator_container  |     raise InvalidSchema(f"No connection adapters were found for {url!r}")
+network_operator_container  | requests.exceptions.InvalidSchema: No connection adapters were found for '127.0.0.1:3000/mw/ai-inference/'
+network_operator_container  | [05/Aug/2024 16:37:18] "POST /api/ai-network-operator/ HTTP/1.1" 500 133206
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:38:23] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:38:58
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:39:15
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:39:17 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 46, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 76, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:39:17] "POST /api/ai-network-operator/ HTTP/1.1" 500 94306
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:40:31
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:40:33 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 46, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 76, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:40:33] "POST /api/ai-network-operator/ HTTP/1.1" 500 94321
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:40:51 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 46, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 76, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:40:51] "POST /api/ai-network-operator/ HTTP/1.1" 500 94377
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:41:11
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:41:13 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 46, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 76, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:41:13] "POST /api/ai-network-operator/ HTTP/1.1" 500 94383
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:41:40
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:41:53 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:41:53 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ !!! ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 77, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:41:53] "POST /api/ai-network-operator/ HTTP/1.1" 500 94382
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:41:54 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:41:54 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ !!! ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 77, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:41:54] "POST /api/ai-network-operator/ HTTP/1.1" 500 94382
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:04 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:04 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ !!! ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 77, in aeye_ai_inference_request
+network_operator_container  |     }
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:42:04] "POST /api/ai-network-operator/ HTTP/1.1" 500 91336
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:42:05
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:42:11
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:12 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:12 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ !!! ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 48, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 78, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:42:12] "POST /api/ai-network-operator/ HTTP/1.1" 500 94308
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:42:34
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:36 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 74, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, '!!!')
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:42:37] "POST /api/ai-network-operator/ HTTP/1.1" 500 94087
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:42:51
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:51 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:42:51 AA[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ !!! ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 79, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:42:51] "POST /api/ai-network-operator/ HTTP/1.1" 500 94336
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:43:01
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:43:02 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 77, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:43:02] "POST /api/ai-network-operator/ HTTP/1.1" 500 94307
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:43:15
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:43:16 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:43:16 AA[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ !!! ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 79, in aeye_ai_inference_request
+network_operator_container  |     print_log('active', whoami, api, "Send Data to : {}".format(url))
+network_operator_container  | UnboundLocalError: local variable 'whoami' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:43:16] "POST /api/ai-network-operator/ HTTP/1.1" 500 94336
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:43:51
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:43:52 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:43:52 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : 127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 80, in aeye_ai_inference_request
+network_operator_container  |     response = requests.post(url, data=data, files=files)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/api.py", line 115, in post
+network_operator_container  |     return request("post", url, data=data, json=json, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+network_operator_container  |     return session.request(method=method, url=url, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+network_operator_container  |     resp = self.send(prep, **send_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 697, in send
+network_operator_container  |     adapter = self.get_adapter(url=request.url)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/requests/sessions.py", line 792, in get_adapter
+network_operator_container  |     raise InvalidSchema(f"No connection adapters were found for {url!r}")
+network_operator_container  | requests.exceptions.InvalidSchema: No connection adapters were found for '127.0.0.1:3000/mw/ai-inference/'
+network_operator_container  | [05/Aug/2024 16:43:52] "POST /api/ai-network-operator/ HTTP/1.1" 500 133537
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:45:23
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:45:26 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:45:26 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:45:26] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 89, in aeye_ai_inference_request
+network_operator_container  |     print_log('error', whoami, api, "Failed to Receive Data : {}".format(message) )
+network_operator_container  | UnboundLocalError: local variable 'message' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:45:26] "POST /api/ai-network-operator/ HTTP/1.1" 500 94774
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:47:14
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:47:14 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:47:14 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:47:14] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
+network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 91, in aeye_ai_inference_request
+network_operator_container  |     print_log('error', whoami, api, "Failed to Receive Data : {}".format(message) )
+network_operator_container  | UnboundLocalError: local variable 'message' referenced before assignment
+network_operator_container  | [05/Aug/2024 16:47:15] "POST /api/ai-network-operator/ HTTP/1.1" 500 94741
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:48:42
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:49:12
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:49:14 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:49:14 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:49:14] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:49:14 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+network_operator_container  |     response = self.handle_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+network_operator_container  |     self.raise_uncaught_exception(exc)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+network_operator_container  |     raise exc
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+network_operator_container  |     response = handler(request, *args, **kwargs)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 49, in create
+network_operator_container  |     if response.status_code==200:
+network_operator_container  | AttributeError: 'int' object has no attribute 'status_code'
+network_operator_container  | [05/Aug/2024 16:49:14] "POST /api/ai-network-operator/ HTTP/1.1" 500 85447
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:50:46
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:50:55 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:50:55 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | [05/Aug/2024 16:50:55] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | 2024-08-05 16:50:55 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [05/Aug/2024 16:50:55] "POST /api/ai-network-operator/ HTTP/1.1" 400 76
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:52:34
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:35 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:35 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:35 MW - Inference[ MW - Inference ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Received Data : <rest_framework.request.Request: POST '/mw/ai-inference/'> ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | [05/Aug/2024 16:52:35] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:35 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [05/Aug/2024 16:52:35] "POST /api/ai-network-operator/ HTTP/1.1" 400 76
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:44 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:44 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:44 MW - Inference[ MW - Inference ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Received Data : <rest_framework.request.Request: POST '/mw/ai-inference/'> ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:44 Yoonchul[ API - ANO ]
+network_operator_container  | [05/Aug/2024 16:52:44] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [05/Aug/2024 16:52:44] "POST /api/ai-network-operator/ HTTP/1.1" 400 76
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:52:44
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:49 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:49 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:49 MW - Inference[ MW - Inference ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Received Data : <QueryDict: {'whoami': ['AEYE NetOper ANO'], 'image': [<InMemoryUploadedFile: Untitled.png (image/png)>]}> ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:52:49 Yoonchul[ API - ANO ]
+network_operator_container  | [05/Aug/2024 16:52:49] "POST /mw/ai-inference/ HTTP/1.1" 400 75
+network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [05/Aug/2024 16:52:49] "POST /api/ai-network-operator/ HTTP/1.1" 400 76
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | Exception in thread django-main-thread:
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+network_operator_container  |     self.run()
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 870, in run
+network_operator_container  |     self._target(*self._args, **self._kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+network_operator_container  |     fn(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+network_operator_container  |     self.check(display_num_errors=True)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+network_operator_container  |     all_issues = checks.run_checks(
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+network_operator_container  |     new_errors = check(app_configs=app_configs, databases=databases)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+network_operator_container  |     return check_resolver(resolver)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+network_operator_container  |     return check_method()
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+network_operator_container  |     for pattern in self.url_patterns:
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+network_operator_container  |     res = instance.__dict__[self.name] = self.func(instance)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+network_operator_container  |     patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+network_operator_container  |     res = instance.__dict__[self.name] = self.func(instance)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+network_operator_container  |     return import_module(self.urlconf_name)
+network_operator_container  |   File "/usr/local/lib/python3.8/importlib/__init__.py", line 127, in import_module
+network_operator_container  |     return _bootstrap._gcd_import(name[level:], package, level)
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+network_operator_container  |   File "/app/AEYE_Network_Operator/urls.py", line 22, in <module>
+network_operator_container  |     path('api/', include('api.urls')),
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+network_operator_container  |     urlconf_module = import_module(urlconf_module)
+network_operator_container  |   File "/usr/local/lib/python3.8/importlib/__init__.py", line 127, in import_module
+network_operator_container  |     return _bootstrap._gcd_import(name[level:], package, level)
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+network_operator_container  |   File "/app/api/urls.py", line 5, in <module>
+network_operator_container  |     from .views.AEYE_ANO import aeye_ano_Viewsets
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 76
+network_operator_container  |     'message' : 'Request AI Inference'
+network_operator_container  |               ^
+network_operator_container  | SyntaxError: invalid syntax
+network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 05, 2024 - 16:54:24
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:54:27 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:54:27 Yoonchul[ API - ANO ]
+network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:54:27 AEYE NetOper ANO[ MW - Inference ]
+network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:54:27 AEYE NetOper MW Inference[ MW - Inference ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to add image and h5 files to JSON files: [Errno 2] No such file or directory: '/app/mw/views/weight/Srinivasan2014.h5' ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:54:27 AEYE NetOper MW Inference[ MW - Inference ]
+network_operator_container  | [AI NetOper - error] message: [ Failed to Create Data : 400 ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /mw/ai-inference/
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-05 16:54:27 Yoonchul[ API - ANO ]
+network_operator_container  | [05/Aug/2024 16:54:27] "POST /mw/ai-inference/ HTTP/1.1" 400 94
+network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [05/Aug/2024 16:54:27] "POST /api/ai-network-operator/ HTTP/1.1" 400 76

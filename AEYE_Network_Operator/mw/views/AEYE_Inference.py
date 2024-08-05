@@ -50,6 +50,8 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
             else:
                 return response
         else:
+            print_log('error', 'MW - Inference', mw, "Failed to Received Data : {}".format(request.data))
+
             message = "Client Sent Invalid Data"
             data = aeye_create_json_data(message)
             return Response(data, status=status.HTTP_400_BAD_REQUEST)

@@ -25,7 +25,7 @@ def print_log(status, whoami, api, message) :
 
 api = 'API - ANO'
 
-url = '127.0.0.1:3000/mw/ai-inference/'
+url = 'http://127.0.0.1:3000/mw/ai-inference/'
 
 class aeye_ano_Viewsets(viewsets.ModelViewSet):
     queryset=aeye_ano_models.objects.all().order_by('id')
@@ -39,11 +39,12 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
             operation = serializer.validated_data.get('operation')
             message   = serializer.validated_data.get('message')
 
-            print_log('active', whoami, api, 'Received Valid Data : {}'.format(message))
+            print_log('active', whoami, api, 'Received Valid Data : {}, Oper: {}'.format(message, operation))
             
             if operation=='Inference' :
                 image = request.FILES.get('image')
-                response = aeye_ai_inference_request(image, url)
+
+                response = aeye_ai_inference_request(whoami, image, url)
                 
                 if response.status_code==200:
                     whoami, message = aeye_get_data_from_response(response)
@@ -67,16 +68,21 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
             return Response('["ERROR"] AI Server is Not Working!', status = status.HTTP_400_BAD_REQUEST)
     
 
-def aeye_ai_inference_request(image, url):
-
+def aeye_ai_inference_request(whoami, image, url):
+    message = "Failed to Receive Data [NetOper - ANO]"
     files = {'image': (image.name, image.read(), image.content_type)}
     data = {
-        'whoami' : 'AEYE NetOper ANO'
+        'whoami' : 'AEYE NetOper ANO',
+        'message' : 'Request AI Inference'
     }
+
+    print_log('active', whoami, api, "Send Data to : {}".format(url))
 
     response = requests.post(url, data=data, files=files)
 
     if response.status_code==200:
+        print_log('active', whoami, api, "Received Data from : {}".format(url))
+
         response_data = response.json()
         whoami, message = aeye_get_data_from_response(response_data)
         
@@ -84,7 +90,7 @@ def aeye_ai_inference_request(image, url):
         return response
     else:
         print_log('error', whoami, api, "Failed to Receive Data : {}".format(message) )
-        return 400
+        return response
 
 
 def aeye_get_data_from_response(reponse):
