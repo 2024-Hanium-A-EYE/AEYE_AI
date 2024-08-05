@@ -3,8 +3,10 @@ from AEYE_AI.config import opticnet_config
 
 def aeye_opticnet_framework(aeye: Flask):
     from AEYE_APPLICATION.AEYE_AOT import api_aot
-    
+    from AEYE_HAL.AEYE_Inference import hal_ai_inference
+
     aeye.register_blueprint(api_aot)
+    aeye.register_blueprint(hal_ai_inference)
 
     @aeye.before_request
     def before_my_request():

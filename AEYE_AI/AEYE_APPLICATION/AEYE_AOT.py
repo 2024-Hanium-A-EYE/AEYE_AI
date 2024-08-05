@@ -70,7 +70,7 @@ def aeye_ai_operation_toolkit() :
 
 
 def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
-    url = 'http://localhost:5000/hal/ai-inference/'
+    url = 'http://127.0.0.1:6000/hal/ai-inference/'
     inference_aot = "AOT - Inference"    
     
     if weight_file:
