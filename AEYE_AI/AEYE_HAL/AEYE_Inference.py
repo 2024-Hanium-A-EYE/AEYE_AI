@@ -40,9 +40,13 @@ def aeye_ai_inference() :
 
         tmp_image = aeye_open_data(whoami, image_file.filename, tmp_image_file_path)
         tmp_weight = aeye_open_data(whoami, weight_file.filename, tmp_weight_file_path)
-
+        print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
         response = aeye_ai_inference_reqeuest(whoami, tmp_image, tmp_weight)
-        aeye_delete_buffer(tmp_image_file_path, tmp_weight_file_path)
+        print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
+                                                                                .format(response))  
+
+        aeye_delete_buffer(whoami, image_file.filename, tmp_image_file_path)
+        aeye_delete_buffer(whoami, image_file.filename, tmp_weight_file_path)
 
         return response
 
@@ -108,15 +112,19 @@ def aeye_create_buffer(whoami, image_file, weight_file):
 
     return temp_image_file_path, temp_weight_file_path
 
-def aeye_delete_buffer(tmp_image_path, tmp_weight_path):
+def aeye_delete_buffer(whoami, file_name, tmp_file_path):
     try:
-        os.remove(tmp_image_path)
-        os.remove(tmp_weight_path)
+        os.remove(tmp_file_path)
+        print_log('active', whoami, inference_hal, "Deleted Temporary File : {}"
+                                                                    .format(file_name))
     except OSError as e:
         print(f"Error: {e.strerror}")
+        print_log('active', whoami, inference_hal, "Deleted Temporary File : {}"
+                                                                    .format(file_name))
 
-def aeye_open_data(whoami, file_name, file_path) :
-    with open(file_path, 'rb') as file:
+
+def aeye_open_data(whoami, file_name, tmp_file_path) :
+    with open(tmp_file_path, 'rb') as file:
         data = file.read()
 
     if data :
