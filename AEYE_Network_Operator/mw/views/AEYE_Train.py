@@ -38,8 +38,7 @@ class aeye_train_Viewswets(viewsets.ModelViewSet):
             message   = serializer.validated_data.get('message')
             print_log('active', whoami, mw, "Succeed to Received Data : {}".format(message))
 
-            image = request.FILES.get('image')
-            response = aeye_ai_inference_request(image, url)
+            response = aeye_ai_inference_request()
 
             if response.status_code==200:
                 return response
@@ -54,8 +53,8 @@ class aeye_train_Viewswets(viewsets.ModelViewSet):
 
 
 
-def aeye_ai_inference_request(image, url):
-    whoami = 'AEYE NetOper MW Inference'
+def aeye_ai_inference_request():
+    whoami = 'AEYE NetOper MW Train'
     data = {
         'whoami' : 'AEYE NetOper MW Train',
         'operation' : 'Train',
