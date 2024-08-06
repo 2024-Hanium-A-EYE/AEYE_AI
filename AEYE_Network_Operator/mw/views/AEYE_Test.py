@@ -40,7 +40,7 @@ class aeye_test_Viewswets(viewsets.ModelViewSet):
             message   = serializer.validated_data.get('message')
             print_log('active', whoami, mw, "Succeed to Received Data : {}".format(message))
 
-            response = aeye_ai_inference_request()
+            response = aeye_ai_test_request()
 
             if response.status_code==200:
                 return response
@@ -55,7 +55,7 @@ class aeye_test_Viewswets(viewsets.ModelViewSet):
 
 
 
-def aeye_ai_inference_request():
+def aeye_ai_test_request():
     whoami = 'AEYE NetOper MW Inference'
     data = {
         'whoami' : 'AEYE NetOper MW Test',
