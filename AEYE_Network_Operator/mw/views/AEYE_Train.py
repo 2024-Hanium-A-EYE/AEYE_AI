@@ -2,13 +2,11 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import status
-from .models import aeye_train_models
-from .serializers import aeye_train_serializers
-from .forms import aeye_image_form
+from .models import aeye_test_models
+from .serializers import aeye_test_serializers
 from colorama import Fore, Back, Style
 from datetime import datetime
 import requests
-import os
 
 def print_log(status, whoami, mw, message) :
     now = datetime.now()
@@ -29,11 +27,11 @@ mw = 'MW - Train'
 
 url = 'http://127.0.0.1:2000/api/ai-toolkit/'
 class aeye_train_Viewswets(viewsets.ModelViewSet):
-    queryset=aeye_train_models.objects.all().order_by('id')
-    serializer_class=aeye_train_serializers
+    queryset=aeye_test_models.objects.all().order_by('id')
+    serializer_class=aeye_test_serializers
 
     def create(self, request) :
-        serializer = aeye_train_serializers(data = request.data)
+        serializer = aeye_test_serializers(data = request.data)
 
         if serializer.is_valid() :
             whoami    = serializer.validated_data.get('whoami')
