@@ -25,7 +25,7 @@ def print_log(status, whoami, mw, message) :
               Fore.RED + "[AI NetOper - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
 
-mw = 'MW - Inference'
+mw = 'MW - Train'
 
 url = 'http://127.0.0.1:2000/api/ai-toolkit/'
 class aeye_train_Viewswets(viewsets.ModelViewSet):
