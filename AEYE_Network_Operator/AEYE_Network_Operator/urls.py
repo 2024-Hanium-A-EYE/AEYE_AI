@@ -21,4 +21,5 @@ urlpatterns = [
 
     path('api/', include('api.urls')),
     path('mw/',  include('mw.urls')),
+    path('hal/',  include('hal.urls')),
 ]
