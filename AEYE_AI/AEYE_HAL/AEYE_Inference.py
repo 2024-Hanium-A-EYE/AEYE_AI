@@ -10,7 +10,6 @@ hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 
 
 def print_log(status, whoami, hal, message) :
-    colorama.init(strip=False, convert=True)
 
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
