@@ -1,0 +1,89 @@
+from flask import jsonify, request, Blueprint
+from colorama import Fore, Back, Style
+from werkzeug.utils import secure_filename
+from datetime import datetime
+import requests
+import io
+import os
+
+api_aot = Blueprint('application_layer_UCTC', __name__)
+
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+def print_log(status, whoami, api, message) :
+    now = datetime.now()
+    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+    if status == "active" :
+        print("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.GREEN + "[active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    elif status == "error" :
+        print("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.RED + "[error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    
+api = 'OpticNet - API UCTC'
+
+@api_aot.route('/api/start-upload-file/', methods = ['POST'])
+def aeye_upload_check_tcp_connection() :
+
+    whoami      = request.form.get('whoami')
+    message     = request.form.get('message')
+    index_chunk = request.form.get('index_chunk')
+    index_hash   = request.form.get('index_hash')
+    
+    if whoami:
+        if message:
+            if index_chunk:
+                if index_hash:
+                    
+                    print_log('active', whoami, api, "{} received valid from {}".format(whoami, api))
+                    whoami ='AEYE OpticNet API UCTC'
+                    message='AEYE OpticNet is alive' 
+                    data={
+                        'whoami' : whoami,
+                        'message': message
+                    }
+                    return jsonify(data), 400
+                else:
+                    print_log('error', whoami, api, "{} missed to send index_hash. recieved : {}".format(whoami, request.data))
+                    whoami ='AEYE OpticNet API UCTC'
+                    message='AEYE OpticNet is alive' 
+                    data={
+                        'whoami' : whoami,
+                        'message': message
+                    }
+                    return jsonify(data), 400
+            else:
+                print_log('error', whoami, api, "{} missed to send index_chunk. recieved : {}".format(whoami, request.data))
+                whoami ='AEYE OpticNet API UCTC'
+                message='AEYE OpticNet is alive' 
+                data={
+                        'whoami' : whoami,
+                        'message': message
+                    }
+                return jsonify(data), 400
+        else:
+            print_log('error', whoami, api, "{} missed to send message. recieved : {}".format(whoami, request.data))
+            whoami ='AEYE OpticNet API UCTC'
+            message='AEYE OpticNet is alive' 
+            data={
+                    'whoami' : whoami,
+                    'message': message
+                }
+            return jsonify(data), 400    
+    else:
+        print_log('error', whoami, api, "{} missed to send whoami. recieved : {}".format(whoami, request.data))
+        whoami ='AEYE OpticNet API UCTC'
+        message='AEYE OpticNet is alive' 
+        data={
+                'whoami' : whoami,
+                'message': message
+            }
+        return jsonify(data), 400   
+    
