@@ -1,51 +1,87 @@
-time="2024-08-07T10:27:21+09:00" level=warning msg="/home/yoonchcul/Documents/Hanium_2024/AEYE_AI/develop/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
-time="2024-08-07T10:27:21+09:00" level=warning msg="Found orphan containers ([seminar_container]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+time="2024-08-07T17:13:51+09:00" level=warning msg="/home/yoonchcul/Documents/Hanium_2024/AEYE_AI/develop/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2024-08-07T17:13:51+09:00" level=warning msg="Found orphan containers ([seminar_container]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
  Container opticnet_container  Running
- Container network_operator_container  Running
+ Container network_operator_container  Created
 Attaching to network_operator_container, opticnet_container
+network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 08:13:51
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:26 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:26 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:26 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:26 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
+network_operator_container  | 2024-08-07 08:13:56 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:26 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:27:30] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:27:30] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:30 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
+network_operator_container  | 2024-08-07 08:13:56 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:30 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
+network_operator_container  | 2024-08-07 08:13:56 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | Internal Server Error: /mw/ai-inference/
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+network_operator_container  |     response = get_response(request)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+network_operator_container  |     return view_func(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+network_operator_container  |     return self.dispatch(request, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 511, in dispatch
+network_operator_container  |     self.response = self.finalize_response(request, response, *args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 423, in finalize_response
+network_operator_container  |     assert isinstance(response, HttpResponseBase), (
+network_operator_container  | AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+network_operator_container  | [07/Aug/2024 08:13:56] [35;1m"POST /mw/ai-inference/ HTTP/1.1" 500 70944[0m
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:13:56 [ NetOper API ANO ] send to : [34m[ NetOper API - ANO ][39m
+network_operator_container  | [31m[error] [31mfailed to send data to : http://127.0.0.1:3000/mw/ai-inference/
+network_operator_container  |         received message from the server: Failed to Receive Data [NetOper - ANO][39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [07/Aug/2024 08:13:56] [31;1m"POST /api/ai-network-operator/ HTTP/1.1" 400 76[0m
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 08:14:53
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:14:57 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:27:30 Yoonchul[ API - ANO ]
-network_operator_container  | [07/Aug/2024 01:27:30] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | 2024-08-07 08:14:57 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:14:57 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:14:57 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------[07/Aug/2024 08:14:57] [m"POST /mw/ai-inference/ HTTP/1.1" 200 6[0m
+network_operator_container  | 
 network_operator_container  | Internal Server Error: /api/ai-network-operator/
 network_operator_container  | Traceback (most recent call last):
 network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
@@ -65,53 +101,232 @@ network_operator_container  |     raise exc
 network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
 network_operator_container  |     response = handler(request, *args, **kwargs)
 network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
+network_operator_container  |     response = aeye_ai_inference_request(image, url)
 network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:27:30] "POST /api/ai-network-operator/ HTTP/1.1" 500 98914
+network_operator_container  |     whoami, message = aeye_get_data_from_response(response)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 96, in aeye_get_data_from_response
+network_operator_container  |     whoami = response_data.get('whoami', '')
+network_operator_container  | AttributeError: 'str' object has no attribute 'get'
+network_operator_container  | [07/Aug/2024 08:14:57] [35;1m"POST /api/ai-network-operator/ HTTP/1.1" 500 99080[0m
 network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | [0mWatching for file changes with StatReloader
 network_operator_container  | Performing system checks...
 network_operator_container  | 
 network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:31:32
+network_operator_container  | August 07, 2024 - 08:15:38
 network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
 network_operator_container  | Starting development server at http://0.0.0.0:3000/
 network_operator_container  | Quit the server with CONTROL-C.
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:34 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | 2024-08-07 08:15:40 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:34 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | 2024-08-07 08:15:40 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:34 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
+network_operator_container  | 2024-08-07 08:15:40 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:34 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
+network_operator_container  | 2024-08-07 08:15:40 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------[07/Aug/2024 08:15:40] [m"POST /mw/ai-inference/ HTTP/1.1" 200 34[0m
+network_operator_container  | 
+network_operator_container  | [07/Aug/2024 08:15:40] [m"POST /api/ai-network-operator/ HTTP/1.1" 200 46[0m
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | Exception in thread django-main-thread:
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+network_operator_container  |     self.run()
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 870, in run
+network_operator_container  |     self._target(*self._args, **self._kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+network_operator_container  |     fn(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+network_operator_container  |     self.check(display_num_errors=True)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/base.py", line 469, in check
+network_operator_container  |     raise SystemCheckError(msg)
+network_operator_container  | django.core.management.base.SystemCheckError: [31;1mSystemCheckError: System check identified some issues:
+network_operator_container  | [0m
+network_operator_container  | ERRORS:
+network_operator_container  | [31;1m?: (urls.E006) The MEDIA_URL setting must end with a slash.[0m
+network_operator_container  | 
+network_operator_container  | System check identified 1 issue (0 silenced).
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | Exception in thread django-main-thread:
+network_operator_container  | Traceback (most recent call last):
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+network_operator_container  |     self.run()
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 870, in run
+network_operator_container  |     self._target(*self._args, **self._kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+network_operator_container  |     fn(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+network_operator_container  |     self.check(display_num_errors=True)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/base.py", line 469, in check
+network_operator_container  |     raise SystemCheckError(msg)
+network_operator_container  | django.core.management.base.SystemCheckError: [31;1mSystemCheckError: System check identified some issues:
+network_operator_container  | [0m
+network_operator_container  | ERRORS:
+network_operator_container  | [31;1m?: (urls.E006) The MEDIA_URL setting must end with a slash.[0m
+network_operator_container  | 
+network_operator_container  | System check identified 1 issue (0 silenced).
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 08:16:25
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:16:27 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:34 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
+network_operator_container  | 2024-08-07 08:16:27 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:31:38] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:31:38] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:38 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : <Response [200]> ]
+network_operator_container  | 2024-08-07 08:16:27 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:16:27 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------[07/Aug/2024 08:16:27] [m"POST /mw/ai-inference/ HTTP/1.1" 200 34[0m
+network_operator_container  | 
+network_operator_container  | [07/Aug/2024 08:16:27] [m"POST /api/ai-network-operator/ HTTP/1.1" 200 46[0m
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 08:17:30
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:33 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:33 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:33 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [07/Aug/2024 08:17:33] [m"POST /mw/ai-inference/ HTTP/1.1" 200 34[0m
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:33 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [07/Aug/2024 08:17:33] [m"POST /api/ai-network-operator/ HTTP/1.1" 200 46[0m
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:44 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:44 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:44 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [07/Aug/2024 08:17:44] [m"POST /mw/ai-inference/ HTTP/1.1" 200 34[0m
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:17:44 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [07/Aug/2024 08:17:44] [m"POST /api/ai-network-operator/ HTTP/1.1" 200 46[0m
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 08:18:27
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:18:30 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:18:30 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:18:30 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:18:30 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------[07/Aug/2024 08:18:30] [m"POST /mw/ai-inference/ HTTP/1.1" 200 34[0m
+network_operator_container  | 
+network_operator_container  | [07/Aug/2024 08:18:30] [m"POST /api/ai-network-operator/ HTTP/1.1" 200 46[0m
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 08:23:36
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:23:42 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:23:42 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-07 08:23:42 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | Internal Server Error: /mw/ai-inference/
 network_operator_container  | Traceback (most recent call last):
@@ -131,1647 +346,124 @@ network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/res
 network_operator_container  |     raise exc
 network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
 network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 46, in create
-network_operator_container  |     response = aeye_ai_inference_request(image, url)
-network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 78, in aeye_ai_inference_request
-network_operator_container  |     whoami  = response_data.get('whoami')
-network_operator_container  | AttributeError: 'Response' object has no attribute 'get'
-network_operator_container  | [07/Aug/2024 01:31:38] "POST /mw/ai-inference/ HTTP/1.1" 500 94847
+network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 57, in create
+network_operator_container  |     img_file_path = os.path.join(os.path.dirname(__file__), 'images', image.filename)
+network_operator_container  | AttributeError: 'InMemoryUploadedFile' object has no attribute 'filename'
+network_operator_container  | [07/Aug/2024 08:23:42] [35;1m"POST /mw/ai-inference/ HTTP/1.1" 500 85382[0m
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:31:38 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - error] message: [ Failed to Receive Data : Failed to Receive Data [NetOper - ANO] ]
+network_operator_container  | 2024-08-07 08:23:42 [ NetOper API ANO ] send to : [34m[ NetOper API - ANO ][39m
+network_operator_container  | [31m[error] [31mfailed to send data to : http://127.0.0.1:3000/mw/ai-inference/
+network_operator_container  |         received message from the server: Failed to Receive Data [NetOper - ANO][39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | Bad Request: /api/ai-network-operator/
-network_operator_container  | [07/Aug/2024 01:31:38] "POST /api/ai-network-operator/ HTTP/1.1" 400 76
+network_operator_container  | [07/Aug/2024 08:23:42] [31;1m"POST /api/ai-network-operator/ HTTP/1.1" 400 76[0m
 network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | [0mWatching for file changes with StatReloader
 network_operator_container  | Performing system checks...
 network_operator_container  | 
 network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:33:17
+network_operator_container  | August 07, 2024 - 08:23:47
 network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
 network_operator_container  | Starting development server at http://0.0.0.0:3000/
 network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:19 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:19 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:19 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:19 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:19 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:33:23] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:33:23] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:23 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:23 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:33:23 Yoonchul[ API - ANO ]
-network_operator_container  | [07/Aug/2024 01:33:23] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:33:23] "POST /api/ai-network-operator/ HTTP/1.1" 500 98914
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:35:13
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:21 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:21 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:21 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:21 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:21 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:29 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpyajgsj1v, /tmp/tmpz6zgpm92 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:27:30 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:36 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:36 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:36 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpzghtoa9f, /tmp/tmpht6da8_9 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:31:38 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:20 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:20 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:20 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:23 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpgwj6cdz0, /tmp/tmp5z6imi0s ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:23 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:23 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:23 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:23 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:33:23 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:23 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:23 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:23 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:35:25] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:35:25] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:25 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:35:25 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:35:25] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 2024-08-07 01:35:25 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:35:25] "POST /api/ai-network-operator/ HTTP/1.1" 500 98914
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:36:51
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:53 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:53 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:53 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:53 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:53 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:36:57] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:36:57] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:57 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:57 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:36:57] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:36:57 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:36:57] "POST /api/ai-network-operator/ HTTP/1.1" 500 98992
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:37:57
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:38:23
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:24 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:24 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:24 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:24 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:24 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:38:28] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:38:28] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:28 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:28 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:38:28] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:38:28 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:38:28] "POST /api/ai-network-operator/ HTTP/1.1" 500 98999
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:39:16
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:18 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:18 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:18 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:18 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:18 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmp3fexa8sy, /tmp/tmp69c3ldxp ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:35:25 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:55 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:55 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:55 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmp9xcdwr_e, /tmp/tmpco34besv ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:36:57 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:26 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:26 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:26 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpigbyqfz1, /tmp/tmpzzs2ljw0 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:38:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:20 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:20 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:20 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpfje9fbqi, /tmp/tmpq6hmij2k ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:39:22] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:39:22] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:22 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:22 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:39:22] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:39:22 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:39:22] "POST /api/ai-network-operator/ HTTP/1.1" 500 98999
 network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | [0mWatching for file changes with StatReloader
 network_operator_container  | Performing system checks...
 network_operator_container  | 
 network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:40:24
+network_operator_container  | August 07, 2024 - 08:24:23
 network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
 network_operator_container  | Starting development server at http://0.0.0.0:3000/
 network_operator_container  | Quit the server with CONTROL-C.
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:26 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
+network_operator_container  | 2024-08-07 08:24:25 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:26 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
+network_operator_container  | 2024-08-07 08:24:25 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:26 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
+network_operator_container  | 2024-08-07 08:24:25 [ NetOper API ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
 network_operator_container  | -----------------------------------------
+network_operator_container  | /app/mw/views/images/CNV-1569-1.jpeg
+network_operator_container  | [07/Aug/2024 08:24:25] [m"POST /mw/ai-inference/ HTTP/1.1" 200 34[0m
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:26 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
+network_operator_container  | 2024-08-07 08:24:25 [ NetOper API ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received data from : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:26 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:40:30] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:40:30] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:30 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:30 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:40:30] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:40:30 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:40:30] "POST /api/ai-network-operator/ HTTP/1.1" 500 98999
+network_operator_container  | [07/Aug/2024 08:24:25] [m"POST /api/ai-network-operator/ HTTP/1.1" 200 46[0m
 network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | [0mWatching for file changes with StatReloader
 network_operator_container  | Performing system checks...
 network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:41:53
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:41:57 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:41:57 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:41:57 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:41:57 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:41:57 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:42:01] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:42:01] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:42:01 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:42:01 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:42:01 Yoonchul[ API - ANO ]
-network_operator_container  | [07/Aug/2024 01:42:01] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
+network_operator_container  | Exception in thread django-main-thread:
 network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:42:01] "POST /api/ai-network-operator/ HTTP/1.1" 500 98999
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+network_operator_container  |     self.run()
+network_operator_container  |   File "/usr/local/lib/python3.8/threading.py", line 870, in run
+network_operator_container  |     self._target(*self._args, **self._kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+network_operator_container  |     fn(*args, **kwargs)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+network_operator_container  |     self.check(display_num_errors=True)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+network_operator_container  |     all_issues = checks.run_checks(
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+network_operator_container  |     new_errors = check(app_configs=app_configs, databases=databases)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+network_operator_container  |     return check_resolver(resolver)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+network_operator_container  |     return check_method()
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+network_operator_container  |     for pattern in self.url_patterns:
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+network_operator_container  |     res = instance.__dict__[self.name] = self.func(instance)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+network_operator_container  |     patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+network_operator_container  |     res = instance.__dict__[self.name] = self.func(instance)
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+network_operator_container  |     return import_module(self.urlconf_name)
+network_operator_container  |   File "/usr/local/lib/python3.8/importlib/__init__.py", line 127, in import_module
+network_operator_container  |     return _bootstrap._gcd_import(name[level:], package, level)
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+network_operator_container  |   File "/app/AEYE_Network_Operator/urls.py", line 23, in <module>
+network_operator_container  |     path('mw/',  include('mw.urls')),
+network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+network_operator_container  |     urlconf_module = import_module(urlconf_module)
+network_operator_container  |   File "/usr/local/lib/python3.8/importlib/__init__.py", line 127, in import_module
+network_operator_container  |     return _bootstrap._gcd_import(name[level:], package, level)
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+network_operator_container  |   File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+network_operator_container  |   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+network_operator_container  |   File "/app/mw/urls.py", line 5, in <module>
+network_operator_container  |     from .views.AEYE_Inference import aeye_inference_Viewswets
+network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 169
+network_operator_container  |     response_image  = aeye_upload_image_in_chunks(file_path=img_file_path, chunk_size=)
+network_operator_container  |                                                                                       ^
+network_operator_container  | SyntaxError: invalid syntax
 network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
+network_operator_container  | [0mWatching for file changes with StatReloader
 network_operator_container  | Performing system checks...
 network_operator_container  | 
 network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:44:36
+network_operator_container  | August 07, 2024 - 08:26:09
 network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
 network_operator_container  | Starting development server at http://0.0.0.0:3000/
 network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:42 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:42 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:42 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:42 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:42 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:39:22 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:28 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpowhm4c5q, /tmp/tmp3ch7k0wc ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:40:30 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:41:59 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:41:59 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:41:59 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmp7v6jty1j, /tmp/tmpevl43g_v ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:42:01 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:43 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:44 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:44 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:45 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:46 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpcupal08z, /tmp/tmpzlppi88m ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:46 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:46 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:46 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:46 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:44:46] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:44:46] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:46 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:46 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:44:46] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:44:46 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:44:46] "POST /api/ai-network-operator/ HTTP/1.1" 500 98999
-network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:51:01
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:03 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:03 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:03 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:03 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:03 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:51:07] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:51:07] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:07 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:07 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:51:07] "POST /mw/ai-inference/ HTTP/1.1" 200 55
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:07 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:51:07] "POST /api/ai-network-operator/ HTTP/1.1" 500 98943
-network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:51:11
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:14 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:14 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:14 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:14 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:14 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:51:18] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:51:18] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:18 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:18 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:51:18 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:51:18] "POST /mw/ai-inference/ HTTP/1.1" 200 55
-network_operator_container  | Internal Server Error: /api/ai-network-operator/
-network_operator_container  | Traceback (most recent call last):
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
-network_operator_container  |     response = get_response(request)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
-network_operator_container  |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
-network_operator_container  |     return view_func(*args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
-network_operator_container  |     return self.dispatch(request, *args, **kwargs)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
-network_operator_container  |     response = self.handle_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
-network_operator_container  |     self.raise_uncaught_exception(exc)
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
-network_operator_container  |     raise exc
-network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
-network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 47, in create
-network_operator_container  |     response = aeye_ai_inference_request(whoami, image, url)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 87, in aeye_ai_inference_request
-network_operator_container  |     whoami, message = aeye_get_data_from_response(response_data)
-network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 97, in aeye_get_data_from_response
-network_operator_container  |     response_data = reponse.json()
-network_operator_container  | AttributeError: 'dict' object has no attribute 'json'
-network_operator_container  | [07/Aug/2024 01:51:18] "POST /api/ai-network-operator/ HTTP/1.1" 500 98943
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:53:03
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:53:06
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:09 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:09 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:09 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:09 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:09 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:53:13] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:53:13] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:13 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:13 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:13 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | [07/Aug/2024 01:53:13] "POST /mw/ai-inference/ HTTP/1.1" 200 55
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:53:13 AEYE NetOper MW Inference[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : good ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:53:13] "POST /api/ai-network-operator/ HTTP/1.1" 200 46
-network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:53:59
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:01 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:01 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:01 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:01 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:01 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:44:46 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:05 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:05 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:05 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpewxnotk9, /tmp/tmp9kkzlq7o ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:07 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:16 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:16 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:16 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmpp_xi7lqw, /tmp/tmpqm24u5ue ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:51:18 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:11 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:11 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:11 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Image File: Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived valid_data : Untitled.png, model.h5 ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mCreated Temporary Path : /tmp/tmp5p1b4wr7, /tmp/tmpqdb4vs_w ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : GOOD ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ HAL - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mDeleted Temporary File : Untitled.png ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:53:13 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed to Send Data To Client ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:54:03 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
-opticnet_container          | -----------------------------------------
-opticnet_container          | 
-opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-07 01:54:03 AEYE NetOper MW Inference[34m[ AOT - Inference ]
-opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mReceived Weight File: model.h5 ][39m
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:54:05] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:54:05] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:05 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:05 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:54:05] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:05 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:05 AEYE NetOper MW Inference[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:54:05] "POST /api/ai-network-operator/ HTTP/1.1" 200 46
-network_operator_container  | /app/api/views/AEYE_ANO.py changed, reloading.
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 07, 2024 - 01:54:45
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:48 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Valid Data : Request AI Inference, Oper: Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:48 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:48 AEYE NetOper ANO[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeed to Received Data : Request AI Inference ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:48 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succeeded to add image and h5 files to JSON files ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:48 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Send Data to : http://opticnet_container:2000/api/ai-toolkit/ ]
-network_operator_container  | -----------------------------------------
-opticnet_container          | 127.0.0.1 - - [07/Aug/2024 01:54:52] "[37mPOST /hal/ai-inference/ HTTP/1.1[0m" 200 -
-opticnet_container          | 172.18.0.2 - - [07/Aug/2024 01:54:53] "[37mPOST /api/ai-toolkit/ HTTP/1.1[0m" 200 -
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:53 AEYE NetOper MW Inference[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from the Server : {'message': 'Succeed to receive Data from AI', 'whoami': 'OpticNet AOT'} ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:53 OpticNet AOT[ MW - Inference ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:54:53] "POST /mw/ai-inference/ HTTP/1.1" 200 82
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:53 Yoonchul[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Received Data from : http://127.0.0.1:3000/mw/ai-inference/ ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | 
-network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-07 01:54:53 AEYE NetOper MW Inference[ API - ANO ]
-network_operator_container  | [AI NetOper - active] message: [ Succedd to Receive Data : Succeed to receive Data from AI ]
-network_operator_container  | -----------------------------------------
-network_operator_container  | [07/Aug/2024 01:54:53] "POST /api/ai-network-operator/ HTTP/1.1" 200 73

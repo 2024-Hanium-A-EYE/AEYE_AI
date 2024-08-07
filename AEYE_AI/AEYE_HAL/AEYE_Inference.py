@@ -16,7 +16,7 @@ def print_log(status, whoami, hal, message) :
 
     if status == "active" :
         print("\n-----------------------------------------\n"   + 
-              current_time + " " + whoami + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
+              current_time + " " + whoami + " Request to: " + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
@@ -26,7 +26,7 @@ def print_log(status, whoami, hal, message) :
               "\n-----------------------------------------")
         
 
-inference_hal = 'HAL - Inference'
+inference_hal = 'OpticNet HAL - Inference'
 @hal_ai_inference.route('/hal/ai-inference/', methods = ['POST'])
 def aeye_ai_inference() :
     whoami      = request.form.get('whoami')
@@ -79,10 +79,9 @@ def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
 
         if weight_file_path:
             
-            #response = inference.inference(image_file, weight_file, 'Srinivasan2014')
-            #return response
+            response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
+            return response
 
-            return "GOOD"
         else:
             print_log('error', whoami, inference_hal, 'No Image file path')
             return jsonify({"error": "Invalid operation"}), 400
