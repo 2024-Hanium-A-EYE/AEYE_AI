@@ -8,10 +8,28 @@ import os
 
 api_aot = Blueprint('application_layer_AOT', __name__)
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'tmp_chunk'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+import logging
+logging.basicConfig(level=logging.INFO)
+
+def print_log(status, whoami, api, message) :
+    now = datetime.now()
+    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+    
+    if status == "active" :
+        logging.info("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    elif status == "error" :
+        logging.info("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    '''
 def print_log(status, whoami, api, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -26,7 +44,7 @@ def print_log(status, whoami, api, message) :
               current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
               Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
-    
+    '''
 
 @api_aot.route('/api/ai-toolkit/', methods = ['POST'])
 def aeye_ai_operation_toolkit() :
@@ -34,7 +52,6 @@ def aeye_ai_operation_toolkit() :
     whoami      = request.form.get('whoami')
     operation   = request.form.get('operation')
     message     = request.form.get('message')
-    weight_file = request.files.get('weight')     # option
     image_file  = request.files.get('image')
     
     print_log('active', whoami, "AOT - Inference", "Client Requested AEYE AOT")
@@ -42,10 +59,17 @@ def aeye_ai_operation_toolkit() :
 
     if operation == 'Inference' :
 
-        #create_weight_and_image_buffer(reqeust)
-        response = aeye_ai_inference_reqeuest(whoami, image_file, weight_file)
-        delete_weight_and_image_buffer()
-        return response
+        
+        response = aeye_ai_inference_reqeuest(whoami)
+
+        ##################################################
+        data={
+            'whoami' : whoami,
+            'message': "HELLO"
+        }
+        return(data), 200
+        # return response
+    ##################################################
     
     elif operation == 'Test':
         pass
@@ -63,46 +87,34 @@ def aeye_ai_operation_toolkit() :
     
 
 
-def aeye_ai_inference_reqeuest(whoami, image_file, weight_file):
+def aeye_ai_inference_reqeuest(whoami):
     url = 'http://127.0.0.1:2000/hal/ai-inference/'
     api = "AOT - Inference"    
+            
+    data={
+        'whoami' : api,
+        'message': "request AI Inference"
+    }
+
     
-    if weight_file:
-        weight_h5 = secure_filename(weight_file.filename)
-        file_h5 = weight_file.read()
-        print_log('active', whoami, api, 'Received Weight File: {}'.format(weight_h5))
+    
+    response = requests.post(url, data=data)
 
-        if image_file:
-            image_png = secure_filename(image_file.filename)
-            file_png = image_file.read()
-            print_log('active', whoami, api, 'Received Image File: {}'.format(image_png))
-            
-            files, data = get_json_file_for_inference(whoami, image_png, file_png, weight_h5, file_h5)
-            
-            response = requests.post(url, data=data, files=files)
-
-            if response.status_code == 200 :
+    if response.status_code == 200 :
 
 
-                print_log('active', whoami, api, 'Succeed to Send Data To Client')
-                return jsonify({"whoami": 'OpticNet AOT', 'message' : "Succeed to receive Data from AI"}), 200
+        print_log('active', whoami, api, 'Succeed to Send Data To Client')
+        return jsonify({"whoami": 'OpticNet AOT', 'message' : "Succeed to receive Data from AI"}), 200
 
-            elif response.status_code == 400 :
-                print_log('error', whoami, api, 'Failed to receive Data from AI')
-                return jsonify({"error": "Failed Operating AI Inference"}), 400
-            else:
-                print_log('error', whoami, api, 'Failed to receive Data from AI')
-                return jsonify({"error": "Failed Operating AI Inference"}), 400
-            
-            
-            
-        else:
-            print_log('error', whoami, api, 'No Image file uploaded')
-            return jsonify({"error": "Invalid operation"}), 400
-
+    elif response.status_code == 400 :
+        print_log('error', whoami, api, 'Failed to receive Data from AI')
+        return jsonify({"error": "Failed Operating AI Inference"}), 400
     else:
-        print_log('error', whoami, api, 'No Weight file uploaded.')
-        return jsonify({"error": "Invalid operation"}), 400
+        print_log('error', whoami, api, 'Failed to receive Data from AI')
+        return jsonify({"error": "Failed Operating AI Inference"}), 400
+        
+
+
 
 
 def get_json_file_for_inference(whoami, image_name, image_file, weight_name, weight_file) :

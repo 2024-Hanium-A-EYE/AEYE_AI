@@ -3,12 +3,21 @@ from AEYE_AI.config import opticnet_config
 
 def aeye_opticnet_framework(aeye: Flask):
     from AEYE_APPLICATION.AEYE_AOT import api_aot
+    from AEYE_APPLICATION.AEYE_AtoF import api_AtoF
+    from AEYE_APPLICATION.AEYE_UinC import api_UinC
+    
+    aeye.register_blueprint(api_aot)
+    aeye.register_blueprint(api_AtoF)
+    aeye.register_blueprint(api_UinC)
+    
+    from AEYE_APPLICATION.AEYE_UCTC import api_UCTC
+    aeye.register_blueprint(api_UCTC)
+    
     from AEYE_HAL.AEYE_Inference import hal_ai_inference
     from AEYE_HAL.AEYE_Test import hal_ai_test
     from AEYE_HAL.AEYE_Train import hal_ai_train
     from AEYE_HAL.AEYE_Status import hal_ai_status
 
-    aeye.register_blueprint(api_aot)
     aeye.register_blueprint(hal_ai_inference)
     #aeye.register_blueprint(hal_ai_train)
     #aeye.register_blueprint(hal_ai_test)

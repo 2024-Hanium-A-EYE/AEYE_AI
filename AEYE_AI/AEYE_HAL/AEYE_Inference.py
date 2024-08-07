@@ -9,50 +9,63 @@ from AEYE_HAL.AEYE_Driver import inference
 hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 
 
-def print_log(status, whoami, hal, message) :
 
+import logging
+logging.basicConfig(level=logging.INFO)
+
+def print_log(status, whoami, api, message) :
+    now = datetime.now()
+    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+    
+    if status == "active" :
+        logging.info("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    elif status == "error" :
+        logging.info("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    '''
+def print_log(status, whoami, api, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
     if status == "active" :
         print("\n-----------------------------------------\n"   + 
-              current_time + " " + whoami + " Request to: " + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
               Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         print("\n-----------------------------------------\n"   + 
-              current_time + " " + whoami + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
               Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
-        
+    '''
+UPLOAD_FOLDER = 'tmp_chunk'
 
 inference_hal = 'OpticNet HAL - Inference'
 @hal_ai_inference.route('/hal/ai-inference/', methods = ['POST'])
 def aeye_ai_inference() :
     whoami      = request.form.get('whoami')
-    image_file  = request.files.get('image')
-    weight_file = request.files.get('weight')
 
-    validate = check_valid_data(whoami, image_file, weight_file)
+    # Read Data From local
     
-    if validate == 200:
-        print_log('active', whoami, inference_hal, 'Received valid_data : {}, {}'
-                                            .format(image_file.filename, weight_file.filename))        
-        tmp_image_file_path, tmp_weight_file_path = aeye_create_buffer(whoami, image_file, weight_file)
+    # Read Weight file
+    weight_file_name='Srinivasan2014.h5'
+    weight_file_path=os.path.join(UPLOAD_FOLDER, weight_file_name)  
+    
+    img_file_name='CNV-1569-1.jpeg'
+    img_file_path=os.path.join(UPLOAD_FOLDER, img_file_name)
 
-        print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
-        response = aeye_ai_inference_reqeuest(whoami, tmp_image_file_path, tmp_weight_file_path)
-        print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
+    print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
+    response = aeye_ai_inference_reqeuest(whoami, img_file_path, weight_file_path)
+
+    print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
                                                                                 .format(response))  
+    return response, 200
 
-        aeye_delete_buffer(whoami, image_file.filename, tmp_image_file_path)
-        aeye_delete_buffer(whoami, image_file.filename, tmp_weight_file_path)
-
-        return response, 200
-
-    else:
-        print_log('error', whoami, inference_hal, 'Received Invalid valid_data {}, {}'
-                                            .format(image_file.filename, weight_file.filename))
 
 
 def check_valid_data(whoami, image_file, weight_file):

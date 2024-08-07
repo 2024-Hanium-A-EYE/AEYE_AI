@@ -12,7 +12,8 @@ import os
 import hashlib
 
 
-def print_log(status : str, whoami : str, mw : str, message : str)->None :
+def print_log(status, whoami , mw , message):
+    
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -31,9 +32,9 @@ mw = 'NetOper MW - Inference'
 
 server_url   = 'http://opticnet_container:2000'
 url_ai       = '/api/ai-toolkit/'
-url_upload   = '/api/upload-file-chunk'
-url_start    = '/api/start-upload-file' 
-url_assemble = '/api/data-assemble'
+url_upload   = '/api/upload-file-chunk/'
+url_start    = '/api/start-upload-file/' 
+url_assemble = '/api/data-assemble/'
 
 class aeye_inference_Viewswets(viewsets.ModelViewSet):
     queryset=aeye_inference_models.objects.all().order_by('id')
@@ -54,12 +55,12 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
 
             image = request.FILES.get('image')
             response = aeye_ai_inference_request(image)
-
-            if response.status_code==200:
-                return response
-            else:
-                return response
-           
+            
+            #####################################################
+            message = "Client Sent Invalid Data"
+            data = aeye_create_json_data(message)
+            return Response(data, status=status.HTTP_200_OK)
+           #####################################################
         else:
             print_log('error', 'MW - Inference', mw, "Failed to Received Data : {}".format(request.data))
 
@@ -68,8 +69,8 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
-def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
-    whoami = 'NetOper MW Inference',
+def aeye_upload_image_in_chunks(file_path, chunk_size):
+    whoami = 'NetOper MW Inference'
 
     file_name = file_path.split('/')[-1]
     file_size = os.path.getsize(file_path)
@@ -89,7 +90,7 @@ def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
     
     # Request for TCP Protocol.
     print_log('active', whoami, mw, message)
-    response = requests.post("{}{}".format(server_url, url_start), json=metadata)
+    response = requests.post("{}{}".format(server_url, url_start), data=metadata)
     if response.status_code != 200:
         message = 'Failed to receive ok from : {}{}'.format(server_url, url_start)
         data = {
@@ -106,7 +107,7 @@ def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
     with open(file_path, 'rb') as tmp_file:
         chunk_index=0
         while True:
-            chunk=tmp_file(chunk_size)
+            chunk=tmp_file.read(chunk_size)
             if not chunk:
                 break
             chunk_hash=calculate_hash(chunk)
@@ -119,20 +120,24 @@ def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
             }
             response=requests.post("{}{}".format(server_url, url_upload), files=files, data=data)
             
-            if response.status_code==200:
-                pass
-            else:
+            if response.status_code!=200:
                 data = "Failed to send data to : {}{}".format(server_url, url_upload)
                 print_log('error', whoami, mw, message)
+                
                 return Response(data, status=status.HTTP_400_BAD_REQUEST)
             
             chunk_index += 1
-        
+    
+    total_chunk_index = chunk_index
+    
     # Request Assemble
     message='request to assmble files to : {}{}'.format(server_url, url_assemble)
     data={
-        'whoami'  : whoami,
-        'message' : message
+        'whoami'            : whoami,
+        'message'           : message,
+        'file_name'         : file_name,
+        'total_chunk_index' : total_chunk_index,
+        'total_chunk_hash'  : file_hash
     }
     response = requests.post("{}{}".format(server_url, url_assemble), data=data)
 
@@ -152,14 +157,14 @@ def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
         return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
             
         
-def calculate_hash(data)->hashlib:
+def calculate_hash(data):
     sha256 = hashlib.sha256()
     sha256.update(data)
     return sha256.hexdigest()
 
 
 
-def aeye_ai_inference_request(image)->Response:
+def aeye_ai_inference_request(image):
     whoami    = 'NetOper MW Inference'
     operation = 'Inference'
     
@@ -211,7 +216,7 @@ def aeye_ai_inference_request(image)->Response:
         pass
     
 
-def aeye_create_json_files(whoami : str, image):
+def aeye_create_json_files(whoami, image):
     
     h5_file_path = os.path.join(os.path.dirname(__file__), 'weight', 'Srinivasan2014.h5')
 
@@ -229,7 +234,7 @@ def aeye_create_json_files(whoami : str, image):
         return 400
 
 
-def aeye_get_data_from_response(reponse : Response):
+def aeye_get_data_from_response(reponse):
     response_data = reponse.json()
     whoami = response_data.get('whoami', '')
     message = response_data.get('message', '')

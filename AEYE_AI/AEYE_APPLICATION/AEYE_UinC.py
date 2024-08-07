@@ -13,6 +13,25 @@ UPLOAD_FOLDER = 'tmp_chunk'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+
+import logging
+logging.basicConfig(level=logging.INFO)
+
+def print_log(status, whoami, api, message) :
+    now = datetime.now()
+    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+    
+    if status == "active" :
+        logging.info("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    elif status == "error" :
+        logging.info("\n-----------------------------------------\n"   + 
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
+              "\n-----------------------------------------")
+    '''
 def print_log(status, whoami, api, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -27,10 +46,11 @@ def print_log(status, whoami, api, message) :
               current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
               Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
+    '''
 
-api='AEYE OpticNet API UinC'
+i_am_uinc='AEYE OpticNet API UinC'
 
-@api_UinC.route('/api/upload-file/', methods = ['POST'])
+@api_UinC.route('/api/upload-file-chunk/', methods = ['POST'])
 def aeye_ai_upload_file_in_chunk() :
 
     whoami      = request.form.get('whoami')
@@ -38,15 +58,15 @@ def aeye_ai_upload_file_in_chunk() :
     chunk_hash  = request.form.get('chunk_hash')
     chunk_index = int(request.form.get('chunk_index'))
     
-    file        = request.files('file')
+    file        = request.files.get('file')
     
     # validate chunk hash
     chunk_data = file.read()
     if calculate_hash(chunk_data) != chunk_hash:
         print_message='chunk has is mismatch'
-        print_log('error', api, api, print_message)
+        print_log('error', i_am_uinc, i_am_uinc, print_message)
         data = {
-            'whoami' : api,
+            'whoami' : i_am_uinc,
             'message': chunk_data
         }
         return jsonify(data), 400
@@ -58,10 +78,9 @@ def aeye_ai_upload_file_in_chunk() :
     
     message='chunk upload succeed'
     data={
-        'whoami' : api,
+        'whoami' : i_am_uinc,
         'message': message
     }
-    print_log('active', api, api, message)
     return jsonify(data), 200
 
 
