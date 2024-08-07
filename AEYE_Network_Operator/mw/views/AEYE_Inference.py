@@ -27,7 +27,7 @@ def print_log(status, whoami, mw, message) :
 
 mw = 'MW - Inference'
 
-url = 'http://127.0.0.1:2000/api/ai-toolkit/'
+url = 'http://opticnet_container:2000/api/ai-toolkit/'
 class aeye_inference_Viewswets(viewsets.ModelViewSet):
     queryset=aeye_inference_models.objects.all().order_by('id')
     serializer_class=aeye_inference_serializers
@@ -39,7 +39,7 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
         if serializer.is_valid() :
             whoami    = serializer.validated_data.get('whoami')
             message   = serializer.validated_data.get('message')
-            form.save()
+            #form.save()
             print_log('active', whoami, mw, "Succeed to Received Data : {}".format(message))
 
             image = request.FILES.get('image')
@@ -85,13 +85,13 @@ def aeye_ai_inference_request(image, url):
         else:
             print_log('error', whoami, mw, "Failed to Receive Data : {}".format(message) )
 
-            message = "Failed to Get Response For the Server"
+            message = 'Failed to Get Response For the Server'
             data = aeye_create_json_data(message)
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
     else:
         print_log('error', whoami, mw, "Failed to Create Data : {}".format(files) )
 
-        message = "Failed to Add image and files to Json files"
+        message = 'Failed to Add image and files to Json files'
         data = aeye_create_json_data(message)
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
@@ -131,9 +131,6 @@ def aeye_get_data_from_response(reponse):
         return 400
     
 def aeye_create_json_data(message):
-    data = {
-        'whoami' : "AEYE NetOper MW Inference",
-        'message' : message
-    }
+    data = {'whoami' : 'AEYE NetOper MW Inference', 'message' : message}
 
     return data

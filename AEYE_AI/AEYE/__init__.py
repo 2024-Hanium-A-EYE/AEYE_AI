@@ -10,9 +10,9 @@ def aeye_opticnet_framework(aeye: Flask):
 
     aeye.register_blueprint(api_aot)
     aeye.register_blueprint(hal_ai_inference)
-    aeye.register_blueprint(hal_ai_train)
-    aeye.register_blueprint(hal_ai_test)
-    aeye.register_blueprint(hal_ai_status)
+    #aeye.register_blueprint(hal_ai_train)
+    #aeye.register_blueprint(hal_ai_test)
+    #aeye.register_blueprint(hal_ai_status)
     
     
 

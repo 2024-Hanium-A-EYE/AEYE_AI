@@ -50,12 +50,12 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
                     whoami, message = aeye_get_data_from_response(response)
                     data = aeye_create_json_file(message)
 
-                    return Response(data, status = status.HTTP_200_OK)
+                    return Response(data, status=status.HTTP_200_OK)
                 else:
                     message = 'Failed to Receive Data From Server'
                     data = aeye_create_json_file(message)
 
-                    return Response(data, status = status.HTTP_400_BAD_REQUEST)
+                    return Response({'whoami' : "AEYE NetOper ANO", 'message' : message}, status = status.HTTP_400_BAD_REQUEST)
                 
             elif operation=='Train':
                 pass
@@ -83,8 +83,7 @@ def aeye_ai_inference_request(whoami, image, url):
     if response.status_code==200:
         print_log('active', whoami, api, "Received Data from : {}".format(url))
 
-        response_data = response.json()
-        whoami, message = aeye_get_data_from_response(response_data)
+        whoami, message = aeye_get_data_from_response(response)
         
         print_log('active', whoami, api, "Succedd to Receive Data : {}".format(message) )
         return response
@@ -111,9 +110,6 @@ def aeye_get_data_from_response(reponse):
         return 400
     
 def aeye_create_json_file(message):
-    data = {
-        'whoami' : "AEYE NetOper ANO",
-        'message' : message
-    }
+    data = {'whoami' : "AEYE NetOper ANO", 'message' : message}
 
     return data
