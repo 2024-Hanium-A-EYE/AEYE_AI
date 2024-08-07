@@ -110,18 +110,17 @@ def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
             if not chunk:
                 break
             chunk_hash=calculate_hash(chunk)
-            files={'file' : chunk_index, 'chunk_has' : chunk_hash}
+            files={'file' : (file_name, chunk)}
             data={
                 'whoami'      : whoami,
                 'message'     : 'send files in chunk',
-                'index_chunk' : chunk_index,
+                'chunk_index' : chunk_index,
                 'chunk_hash'  : chunk_hash
             }
             response=requests.post("{}{}".format(server_url, url_upload), files=files, data=data)
             
             if response.status_code==200:
-                message = 'succed to send data, index : {}'.format(chunk_index)
-                print_log('active', whoami, mw, message)
+                pass
             else:
                 data = "Failed to send data to : {}{}".format(server_url, url_upload)
                 print_log('error', whoami, mw, message)

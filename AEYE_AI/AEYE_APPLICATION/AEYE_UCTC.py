@@ -8,7 +8,7 @@ import os
 
 api_aot = Blueprint('application_layer_UCTC', __name__)
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'tmp_chunk'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 

@@ -476,3 +476,32 @@ network_operator_container  | August 07, 2024 - 09:04:56
 network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
 network_operator_container  | Starting development server at http://0.0.0.0:3000/
 network_operator_container  | Quit the server with CONTROL-C.
+opticnet_container          | 172.18.0.1 - - [07/Aug/2024 09:18:31] "[31m[1mGET /api/ai-toolkit/ HTTP/1.1[0m" 405 -
+opticnet_container          | 172.18.0.1 - - [07/Aug/2024 09:18:33] "[31m[1mGET /api/ai-toolkit/ HTTP/1.1[0m" 405 -
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 11:34:02
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 11:38:59
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | /app/mw/views/AEYE_Inference.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 07, 2024 - 11:49:29
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
