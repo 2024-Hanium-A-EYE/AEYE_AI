@@ -82,7 +82,7 @@ def aeye_upload_image_in_chunks(file_path : str, chunk_size : int)->Response:
     metadata = {
         'whoami'    : whoami,
         'message'   : message,
-        'filename'  : file_name,
+        'file_name'  : file_name,
         'file_size' : file_size,
         'file_hash' : file_hash
     }
