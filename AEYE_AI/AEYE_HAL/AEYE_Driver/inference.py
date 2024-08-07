@@ -7,20 +7,24 @@ import cv2
 import numpy as np
 import requests
 
-url = 'http://127.0.0.1:3000/log'
+url_log='http://127.0.0.1:2000/mw/status'
 
 # status == active or error
 def print_log(status, message) :
-    data = {'status' : status, 'message' : message}
-    requests.post(url, data=data)
+    data = {
+        'whoami' : 'AI Inference',
+        'status' : status, 
+        'message' : message
+        }
+    requests.post(url_log, data=data)
 
 def print_pred(preds,classes):
 
     preds = preds.ravel()
     y = len(classes)
     
-    data = {"status" : "active", "message" : "GOOD"}
-    requests.post(url=url, data=data)
+    message='preds: {}, classes: {}'.format(preds, classes)
+    print_log('good', message)
 
     for i in range(y):
         preds_rounded = np.around(preds,decimals=4)
@@ -41,7 +45,6 @@ def image_preprocessing(img):
     return img
 
 def inference(img,weights,dataset):
-    print_log('active', "ented inference")
 
     if dataset=='Srinivasan2014':
         classes=['AMD', 'DME','NORMAL']
@@ -49,16 +52,22 @@ def inference(img,weights,dataset):
         classes = ['CNV', 'DME','DRUSEN','NORMAL']
 
     processsed_img = image_preprocessing(img)
-    print_log('active', "image_preprocessing")
 
     K.clear_session()
-    print_log('active', "clear_session")
-
+    
+    message='processsed_img: {}'.format(processsed_img)
+    print_log('good', message)
 
     model = load_model(weights)
     
+    message='loaded Model: {}'.format(model)
+    print_log('good', message)
+    
     preds = model.predict(processsed_img,batch_size=None,steps=1)
-  
+    
+    message='preds: {}'.format(preds)
+    print_log('good', message)
+    
     return preds, classes
     
     

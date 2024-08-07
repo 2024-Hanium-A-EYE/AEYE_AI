@@ -3,7 +3,8 @@ from datetime import datetime
 from colorama import Fore, Back, Style
 
 hal_ai_status = Blueprint('AEYE_HAL_AI_Status', __name__)
-hal = 'HAL - Status'
+hal_status = 'HAL - Status'
+
 def print_log(status, whoami, message, hal) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -29,7 +30,7 @@ def hal_ai_status() :
     validate = check_valid_data(whoami, status, message)
 
     if validate == 200:
-        print_log('active', whoami, message, hal)
+        print_log('active', whoami, message, hal_status)
         return 200
     else:
         return 400
@@ -44,11 +45,11 @@ def check_valid_data(whoami, status, message) :
             if message :
                 return 200
             else :
-                print_log('error', whoami, "Failed to Receive message", hal)
+                print_log('error', whoami, "Failed to Receive message", hal_status)
                 return 400
         else:
-            print_log('error', whoami, "Failed to Receive status", hal)
+            print_log('error', whoami, "Failed to Receive status", hal_status)
             return 400
     else:
-        print_log('error', 'Client', "Failed to Receive whoami", hal)
+        print_log('error', 'Client', "Failed to Receive whoami", hal_status)
         return 400
