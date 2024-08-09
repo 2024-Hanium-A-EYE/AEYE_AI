@@ -1,2 +1,2 @@
-# AEYE_AI
-AEYE 프로젝트 AI 드라이버 입니다.
+# AEYE_Router
+AEYE 프로젝트 Web Router 드라이버 입니다
