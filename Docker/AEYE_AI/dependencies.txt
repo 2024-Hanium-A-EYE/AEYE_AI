@@ -21,3 +21,5 @@ pycm==1.9
 matplotlib
 sklearn
 
+aiohttp
+asyncio

@@ -28,3 +28,6 @@ colorama
 
 # pillow
 pillow
+
+asyncio
+aiohttp
