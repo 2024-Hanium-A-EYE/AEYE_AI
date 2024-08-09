@@ -1,29 +1,214 @@
-time="2024-08-09T11:54:39Z" level=warning msg="/home/ubuntu/AEYE_AI/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
- Container network_operator_container  Created
+time="2024-08-09T12:02:21Z" level=warning msg="/home/ubuntu/AEYE_AI/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container network_operator_container  Running
  Container opticnet_container  Running
 Attaching to network_operator_container, opticnet_container
-network_operator_container  | Watching for file changes with StatReloader
-network_operator_container  | Performing system checks...
-network_operator_container  | 
-network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 09, 2024 - 11:54:40
-network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
-network_operator_container  | Starting development server at http://0.0.0.0:3000/
-network_operator_container  | Quit the server with CONTROL-C.
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:54:43 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | 2024-08-09 12:02:24 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
 network_operator_container  | [32m[active] received message  : Request AI Inference
 network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:54:43 [ NetOper API - ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | 2024-08-09 12:02:24 [ NetOper API - ANO ] send to : [94m[ NetOper API - ANO ][39m
 network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
-network_operator_container  | Invalid HTTP_HOST header: '127.0.0.1:3000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
-network_operator_container  | Bad Request: /mw/ai-inference/
-network_operator_container  | [09/Aug/2024 11:54:43] [31;1m"POST /mw/ai-inference/ HTTP/1.1" 400 60381[0m
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:02:24 [ NetOper API - ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:02:24 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mcheck server status : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:02:24 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mNetOper MW - Inference received valid from OpticNet - API UCTC ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:24] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:02:24 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mserver is ok : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:24] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:24] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:02:25 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mcheck server status : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:02:25 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mNetOper MW - Inference received valid from OpticNet - API UCTC ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:25] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:02:25 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mserver is ok : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:25] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:25] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:25] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:26] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:26] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:26] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:26] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:26] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:26] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:27] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:28] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:28] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:28] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:28] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:28] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:28] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:29] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:29] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:29] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:29] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:29] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:29] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:30] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:02:30] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:02:30 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mrequest AI Inference to : http://opticnet_container:2000/api/ai-toolkit/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:02:30 [ NetOper MW - Inference ] send to: [34m[ AEYE OpticNet AOT Inference ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:02:30 [ AEYE OpticNet AOT Inference ] send to: [34m[ OpticNet HAL - Inference ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:02:30 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mprocesssed_img: [[[[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   [[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   [[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   ...
+opticnet_container          | 
+opticnet_container          |   [[0.0745098  0.0745098  0.0745098 ]
+opticnet_container          |    [0.00784314 0.00784314 0.00784314]
+opticnet_container          |    [0.0627451  0.0627451  0.0627451 ]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]
+opticnet_container          | 
+opticnet_container          |   [[0.01960784 0.01960784 0.01960784]
+opticnet_container          |    [0.07843137 0.07843137 0.07843137]
+opticnet_container          |    [0.04313725 0.04313725 0.04313725]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]
+opticnet_container          | 
+opticnet_container          |   [[0.0627451  0.0627451  0.0627451 ]
+opticnet_container          |    [0.04313725 0.04313725 0.04313725]
+opticnet_container          |    [0.00392157 0.00392157 0.00392157]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]]] ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:02:30] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | 2024-08-09 12:02:30.719323: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+opticnet_container          | 2024-08-09 12:02:33.156701: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+opticnet_container          | 2024-08-09 12:02:33.157785: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+opticnet_container          | name: Tesla T4 major: 7 minor: 5 memoryClockRate(GHz): 1.59
+opticnet_container          | pciBusID: 0000:00:1e.0
+opticnet_container          | totalMemory: 14.58GiB freeMemory: 14.48GiB
+opticnet_container          | 2024-08-09 12:02:33.157817: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+opticnet_container          | 2024-08-09 12:02:33.490133: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+opticnet_container          | 2024-08-09 12:02:33.490176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+opticnet_container          | 2024-08-09 12:02:33.490184: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+opticnet_container          | 2024-08-09 12:02:33.490286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14006 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:00:1e.0, compute capability: 7.5)
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:07 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mloaded Model: <keras.engine.training.Model object at 0x7f2af1a8af98> ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:03:07] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:20 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mpreds: [[4.6706591e-03 9.9532890e-01 4.6126198e-07]] ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:03:20] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:20 [ AEYE OpticNet AOT Inference ] send to: [34m[ OpticNet HAL - Inference ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : (array([[4.6706591e-03, 9.9532890e-01, 4.6126198e-07]], dtype=float32), ['AMD', 'DME', 'NORMAL']) ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | /usr/local/lib/python3.5/dist-packages/werkzeug/filesystem.py:60: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ascii'
+opticnet_container          |   BrokenFilesystemWarning,
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:03:20] "[35m[1mPOST /hal/ai-inference/ HTTP/1.1[0m" 500 -
+opticnet_container          | Traceback (most recent call last):
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2464, in __call__
+opticnet_container          |     return self.wsgi_app(environ, start_response)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2450, in wsgi_app
+opticnet_container          |     response = self.handle_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1867, in handle_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2447, in wsgi_app
+opticnet_container          |     response = self.full_dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1953, in full_dispatch_request
+opticnet_container          |     return self.finalize_request(rv)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1968, in finalize_request
+opticnet_container          |     response = self.make_response(rv)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2131, in make_response
+opticnet_container          |     " {rv.__class__.__name__}.".format(rv=rv)
+opticnet_container          | TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a tuple.
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:20] "[35m[1mPOST /api/ai-toolkit/ HTTP/1.1[0m" 500 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:03:20 [ NetOper MW - Inference] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [31m[error] [31mFailed to Receive Data : request AI Inference to : http://opticnet_container:2000/api/ai-toolkit/ [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [09/Aug/2024 12:03:20] [m"POST /mw/ai-inference/ HTTP/1.1" 200 75[0m
+network_operator_container  | [09/Aug/2024 12:03:20,342] - Broken pipe from ('127.0.0.1', 53952)
+network_operator_container  | 
 network_operator_container  | Internal Server Error: /api/ai-network-operator/
 network_operator_container  | Traceback (most recent call last):
 network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
@@ -49,51 +234,246 @@ network_operator_container  |     return future.result()
 network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 94, in aeye_ai_inference_request
 network_operator_container  |     result_from_server = await response_from_server
 network_operator_container  | TypeError: object ClientResponse can't be used in 'await' expression
-network_operator_container  | [09/Aug/2024 11:54:43] [35;1m"POST /api/ai-network-operator/ HTTP/1.1" 500 95665[0m
+network_operator_container  | [09/Aug/2024 12:03:20] [35;1m"POST /api/ai-network-operator/ HTTP/1.1" 500 95829[0m
 network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
 network_operator_container  | [0mWatching for file changes with StatReloader
 network_operator_container  | Performing system checks...
 network_operator_container  | 
 network_operator_container  | System check identified no issues (0 silenced).
-network_operator_container  | August 09, 2024 - 11:55:13
+network_operator_container  | August 09, 2024 - 12:03:38
 network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
 network_operator_container  | Starting development server at http://0.0.0.0:3000/
 network_operator_container  | Quit the server with CONTROL-C.
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:55:16 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | 2024-08-09 12:03:41 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
 network_operator_container  | [32m[active] received message  : Request AI Inference
 network_operator_container  |          received operation: Inference[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:55:16 [ NetOper API - ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | 2024-08-09 12:03:41 [ NetOper API - ANO ] send to : [94m[ NetOper API - ANO ][39m
 network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:55:16 [ NetOper API - ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | 2024-08-09 12:03:41 [ NetOper API - ANO ] Send to : [94m[ NetOper MW - Inference ][39m
 network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
 network_operator_container  | -----------------------------------------
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:55:16 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | 2024-08-09 12:03:41 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mcheck server status : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | Traceback (most recent call last):
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2464, in __call__
+opticnet_container          |     return self.wsgi_app(environ, start_response)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2450, in wsgi_app
+opticnet_container          |     response = self.handle_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1867, in handle_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2447, in wsgi_app
+opticnet_container          |     response = self.full_dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+opticnet_container          |     rv = self.handle_user_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1821, in handle_user_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+opticnet_container          |     rv = self.dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1936, in dispatch_request
+opticnet_container          |     return self.view_functions[rule.endpoint](**req.view_args)
+opticnet_container          |   File "/app/AEYE_AI/AEYE_APPLICATION/AEYE_AOT.py", line 51, in aeye_ai_operation_toolkit
+opticnet_container          |     respons = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami))
+opticnet_container          |   File "/usr/lib/python3.5/asyncio/base_events.py", line 387, in run_until_complete
+opticnet_container          |     return future.result()
+opticnet_container          |   File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+opticnet_container          |     raise self._exception
+opticnet_container          |   File "/usr/lib/python3.5/asyncio/tasks.py", line 239, in _step
+opticnet_container          |     result = coro.send(None)
+opticnet_container          |   File "/app/AEYE_AI/AEYE_APPLICATION/AEYE_AOT.py", line 96, in aeye_ai_inference_reqeuest
+opticnet_container          |     result = await response
+opticnet_container          | TypeError: object ClientResponse can't be used in 'await' expression
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:41 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mNetOper MW - Inference received valid from OpticNet - API UCTC ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:41] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:03:41 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mserver is ok : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:41] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:41] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:03:42 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
 network_operator_container  | [32m[active] [32mcheck server status : http://opticnet_container:2000/api/start-upload-file/ [39m
 network_operator_container  | -----------------------------------------
 opticnet_container          | INFO:root:
 opticnet_container          | -----------------------------------------
-opticnet_container          | 2024-08-09 11:55:16 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
+opticnet_container          | 2024-08-09 12:03:42 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
 opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mNetOper MW - Inference received valid from OpticNet - API UCTC ][39m
 opticnet_container          | -----------------------------------------
-opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 11:55:16] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:42] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
 network_operator_container  | 
 network_operator_container  | -----------------------------------------
-network_operator_container  | 2024-08-09 11:55:16 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | 2024-08-09 12:03:42 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
 network_operator_container  | [32m[active] [32mserver is ok : http://opticnet_container:2000/api/start-upload-file/ [39m
 network_operator_container  | -----------------------------------------
-opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 11:55:16] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
-opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 11:55:16] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
-network_operator_container  | Internal Server Error: /mw/ai-inference/
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:42] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:42] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:42] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:03:48] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:03:48 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mrequest AI Inference to : http://opticnet_container:2000/api/ai-toolkit/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:48 [ NetOper MW - Inference ] send to: [34m[ AEYE OpticNet AOT Inference ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:48 [ AEYE OpticNet AOT Inference ] send to: [34m[ OpticNet HAL - Inference ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:03:48 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mprocesssed_img: [[[[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   [[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   [[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   ...
+opticnet_container          | 
+opticnet_container          |   [[0.0745098  0.0745098  0.0745098 ]
+opticnet_container          |    [0.00784314 0.00784314 0.00784314]
+opticnet_container          |    [0.0627451  0.0627451  0.0627451 ]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]
+opticnet_container          | 
+opticnet_container          |   [[0.01960784 0.01960784 0.01960784]
+opticnet_container          |    [0.07843137 0.07843137 0.07843137]
+opticnet_container          |    [0.04313725 0.04313725 0.04313725]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]
+opticnet_container          | 
+opticnet_container          |   [[0.0627451  0.0627451  0.0627451 ]
+opticnet_container          |    [0.04313725 0.04313725 0.04313725]
+opticnet_container          |    [0.00392157 0.00392157 0.00392157]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]]] ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:03:48] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | 2024-08-09 12:03:58.682193: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+opticnet_container          | 2024-08-09 12:03:58.682253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+opticnet_container          | 2024-08-09 12:03:58.682265: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+opticnet_container          | 2024-08-09 12:03:58.682274: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+opticnet_container          | 2024-08-09 12:03:58.682372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14006 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:00:1e.0, compute capability: 7.5)
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:04:22 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mloaded Model: <keras.engine.training.Model object at 0x7f2a955d6e80> ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:04:22] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:04:24 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mpreds: [[4.6706591e-03 9.9532890e-01 4.6126198e-07]] ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:04:24] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:04:24 [ AEYE OpticNet AOT Inference ] send to: [34m[ OpticNet HAL - Inference ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : (array([[4.6706591e-03, 9.9532890e-01, 4.6126198e-07]], dtype=float32), ['AMD', 'DME', 'NORMAL']) ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:04:24] "[35m[1mPOST /hal/ai-inference/ HTTP/1.1[0m" 500 -
+opticnet_container          | Traceback (most recent call last):
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2464, in __call__
+opticnet_container          |     return self.wsgi_app(environ, start_response)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2450, in wsgi_app
+opticnet_container          |     response = self.handle_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1867, in handle_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2447, in wsgi_app
+opticnet_container          |     response = self.full_dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1953, in full_dispatch_request
+opticnet_container          |     return self.finalize_request(rv)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1968, in finalize_request
+opticnet_container          |     response = self.make_response(rv)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2131, in make_response
+opticnet_container          |     " {rv.__class__.__name__}.".format(rv=rv)
+opticnet_container          | TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a tuple.
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:04:24] "[35m[1mPOST /api/ai-toolkit/ HTTP/1.1[0m" 500 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:04:24 [ NetOper MW - Inference] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [31m[error] [31mFailed to Receive Data : request AI Inference to : http://opticnet_container:2000/api/ai-toolkit/ [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [09/Aug/2024 12:04:24] [m"POST /mw/ai-inference/ HTTP/1.1" 200 75[0m
+network_operator_container  | Internal Server Error: /api/ai-network-operator/
 network_operator_container  | Traceback (most recent call last):
 network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
 network_operator_container  |     response = get_response(request)
@@ -111,17 +491,355 @@ network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/res
 network_operator_container  |     raise exc
 network_operator_container  |   File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
 network_operator_container  |     response = handler(request, *args, **kwargs)
-network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 57, in create
-network_operator_container  |     response_from_server = aeye_ai_inference_request(image)
-network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 175, in aeye_ai_inference_request
-network_operator_container  |     response_weight = aeye_upload_data(h5_file_path, chunk_size=chunk_size)
-network_operator_container  |   File "/app/mw/views/AEYE_Inference.py", line 75, in aeye_upload_data
-network_operator_container  |     file_size = os.path.getsize(file_path)
-network_operator_container  |   File "/usr/local/lib/python3.8/genericpath.py", line 50, in getsize
-network_operator_container  |     return os.stat(filename).st_size
-network_operator_container  | FileNotFoundError: [Errno 2] No such file or directory: '/app/mw/views/weight/Srinivasan2014.h5'
-network_operator_container  | [09/Aug/2024 11:55:16] [35;1m"POST /mw/ai-inference/ HTTP/1.1" 500 97492[0m
-network_operator_container  | [09/Aug/2024 11:55:16,340] - Broken pipe from ('127.0.0.1', 41212)
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 53, in create
+network_operator_container  |     response_from_server = loop.run_until_complete(aeye_ai_inference_request(image, url))
+network_operator_container  |   File "/usr/local/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+network_operator_container  |     return future.result()
+network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 94, in aeye_ai_inference_request
+network_operator_container  |     result_from_server = await response_from_server
+network_operator_container  | TypeError: object ClientResponse can't be used in 'await' expression
+network_operator_container  | [09/Aug/2024 12:04:24] [35;1m"POST /api/ai-network-operator/ HTTP/1.1" 500 95829[0m
+opticnet_container          | Traceback (most recent call last):
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2464, in __call__
+opticnet_container          |     return self.wsgi_app(environ, start_response)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2450, in wsgi_app
+opticnet_container          |     response = self.handle_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1867, in handle_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2447, in wsgi_app
+opticnet_container          |     response = self.full_dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+opticnet_container          |     rv = self.handle_user_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1821, in handle_user_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+opticnet_container          |     rv = self.dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1936, in dispatch_request
+opticnet_container          |     return self.view_functions[rule.endpoint](**req.view_args)
+opticnet_container          |   File "/app/AEYE_AI/AEYE_APPLICATION/AEYE_AOT.py", line 51, in aeye_ai_operation_toolkit
+opticnet_container          |     respons = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami))
+opticnet_container          |   File "/usr/lib/python3.5/asyncio/base_events.py", line 387, in run_until_complete
+opticnet_container          |     return future.result()
+opticnet_container          |   File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+opticnet_container          |     raise self._exception
+opticnet_container          |   File "/usr/lib/python3.5/asyncio/tasks.py", line 239, in _step
+opticnet_container          |     result = coro.send(None)
+opticnet_container          |   File "/app/AEYE_AI/AEYE_APPLICATION/AEYE_AOT.py", line 96, in aeye_ai_inference_reqeuest
+opticnet_container          |     result = await response
+opticnet_container          | TypeError: object ClientResponse can't be used in 'await' expression
+opticnet_container          | INFO:werkzeug: * Detected change in '/app/AEYE_AI/AEYE_HAL/AEYE_Driver/inference.py', reloading
+opticnet_container          | INFO:werkzeug: * Restarting with stat
+opticnet_container          | Using TensorFlow backend.
+opticnet_container          | WARNING:werkzeug: * Debugger is active!
+opticnet_container          | INFO:werkzeug: * Debugger PIN: 189-594-285
+opticnet_container          | INFO:werkzeug: * Detected change in '/app/AEYE_AI/AEYE_HAL/AEYE_Driver/inference.py', reloading
+opticnet_container          | INFO:werkzeug: * Restarting with stat
+opticnet_container          | Using TensorFlow backend.
+opticnet_container          | WARNING:werkzeug: * Debugger is active!
+opticnet_container          | INFO:werkzeug: * Debugger PIN: 189-594-285
+network_operator_container  | Invalid HTTP_HOST header: 'localhost:3000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:27:54] [31;1m"GET / HTTP/1.1" 400 61853[0m
+network_operator_container  | Invalid HTTP_HOST header: 'localhost:3000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:27:54] [31;1m"GET /favicon.ico HTTP/1.1" 400 61641[0m
+network_operator_container  | [09/Aug/2024 12:27:57] code 400, message Bad request version ('ÖìLde\x98I)')
+network_operator_container  | [09/Aug/2024 12:27:57] [35;1mYou're accessing the development server over HTTPS, but it only supports HTTP.
+network_operator_container  | [0m
+network_operator_container  | Not Found: /
+network_operator_container  | [09/Aug/2024 12:27:57] [33m"GET / HTTP/1.1" 404 2275[0m
+network_operator_container  | [09/Aug/2024 12:27:57] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+network_operator_container  | [09/Aug/2024 12:27:57] [35;1mYou're accessing the development server over HTTPS, but it only supports HTTP.
+network_operator_container  | [0m
+network_operator_container  | Not Found: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:27:57] [33m"GET /favicon.ico HTTP/1.1" 404 2326[0m
+network_operator_container  | Not Found: /
+network_operator_container  | [09/Aug/2024 12:27:58] [33m"GET / HTTP/1.1" 404 2275[0m
+opticnet_container          | INFO:werkzeug: * Detected change in '/app/AEYE_AI/AEYE_HAL/AEYE_Driver/inference.py', reloading
+opticnet_container          | INFO:werkzeug: * Restarting with stat
+opticnet_container          | Using TensorFlow backend.
+opticnet_container          | WARNING:werkzeug: * Debugger is active!
+opticnet_container          | INFO:werkzeug: * Debugger PIN: 189-594-285
+network_operator_container  | Invalid HTTP_HOST header: 'localhost:3000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:40:31] [31;1m"GET / HTTP/1.1" 400 61853[0m
+network_operator_container  | Invalid HTTP_HOST header: 'localhost:3000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:40:31] [31;1m"GET /favicon.ico HTTP/1.1" 400 61641[0m
+network_operator_container  | Not Found: /
+network_operator_container  | [09/Aug/2024 12:40:46] [33m"GET / HTTP/1.1" 404 2275[0m
+network_operator_container  | Invalid HTTP_HOST header: 'localhost:3000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:41:21] [31;1m"GET / HTTP/1.1" 400 61853[0m
+network_operator_container  | Invalid HTTP_HOST header: 'localhost:3000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:41:21] [31;1m"GET /favicon.ico HTTP/1.1" 400 61641[0m
+network_operator_container  | [09/Aug/2024 12:47:49] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x1b\x00\x03\x02\x00\x02\x00\x17\x00\x00\x00')
+network_operator_container  | [09/Aug/2024 12:47:49] [35;1mYou're accessing the development server over HTTPS, but it only supports HTTP.
+network_operator_container  | [0m
+network_operator_container  | [09/Aug/2024 12:47:49] code 400, message Bad request version ('þµi\x0e\x93´`\x90ì\x82\x0e0`(Ü±\x8aQØ¨,fBÜ4u+â')
+network_operator_container  | [09/Aug/2024 12:47:49] [35;1mYou're accessing the development server over HTTPS, but it only supports HTTP.
+network_operator_container  | [0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:47:49] [31;1m"GET / HTTP/1.1" 400 60270[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:47:49] [31;1m"GET /favicon.ico HTTP/1.1" 400 60332[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:48:04] [31;1m"GET / HTTP/1.1" 400 60407[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:48:05] [31;1m"GET /favicon.ico HTTP/1.1" 400 60332[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:48:59] [31;1m"GET / HTTP/1.1" 400 60407[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:48:59] [31;1m"GET /favicon.ico HTTP/1.1" 400 60332[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /
+network_operator_container  | [09/Aug/2024 12:49:15] [31;1m"GET / HTTP/1.1" 400 60407[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /favicon.ico
+network_operator_container  | [09/Aug/2024 12:49:15] [31;1m"GET /favicon.ico HTTP/1.1" 400 60332[0m
+opticnet_container          | INFO:werkzeug:220.149.255.9 - - [09/Aug/2024 12:49:18] "[33mGET / HTTP/1.1[0m" 404 -
+opticnet_container          | INFO:werkzeug:220.149.255.9 - - [09/Aug/2024 12:49:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [09/Aug/2024 12:49:51] [31;1m"POST /api/ai-network-operator/ HTTP/1.1" 400 61096[0m
+network_operator_container  | Invalid HTTP_HOST header: 'ai-aeye-server.com:3000'. You may need to add 'ai-aeye-server.com' to ALLOWED_HOSTS.
+network_operator_container  | Bad Request: /api/ai-network-operator/
+network_operator_container  | [09/Aug/2024 12:50:07] [31;1m"POST /api/ai-network-operator/ HTTP/1.1" 400 61096[0m
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 09, 2024 - 12:50:34
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | /app/AEYE_Network_Operator/settings.py changed, reloading.
+network_operator_container  | [0mWatching for file changes with StatReloader
+network_operator_container  | Performing system checks...
+network_operator_container  | 
+network_operator_container  | System check identified no issues (0 silenced).
+network_operator_container  | August 09, 2024 - 12:50:38
+network_operator_container  | Django version 3.2, using settings 'AEYE_Network_Operator.settings'
+network_operator_container  | Starting development server at http://0.0.0.0:3000/
+network_operator_container  | Quit the server with CONTROL-C.
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ Yoonchul ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] received message  : Request AI Inference
+network_operator_container  |          received operation: Inference[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ NetOper API - ANO ] send to : [94m[ NetOper API - ANO ][39m
+network_operator_container  | [32m[active] send data to : http://127.0.0.1:3000/mw/ai-inference/[39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ NetOper API - ANO ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mMW - Inference received message : Request AI Inference [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mcheck server status : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:50:42 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mNetOper MW - Inference received valid from OpticNet - API UCTC ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:42] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mserver is ok : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:42] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:42] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mcheck server status : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:50:42 [ NetOper MW - Inference ] send to: [34m[ OpticNet - API UCTC ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mNetOper MW - Inference received valid from OpticNet - API UCTC ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:42] "[37mPOST /api/start-upload-file/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:42 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mserver is ok : http://opticnet_container:2000/api/start-upload-file/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:42] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:42] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:43] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:44] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:45] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:46] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:47] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:47] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:47] "[37mPOST /api/upload-file-chunk/ HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:50:49] "[37mPOST /api/data-assemble/ HTTP/1.1[0m" 200 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:50:49 [ NetOper MW - Inference ] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [32m[active] [32mrequest AI Inference to : http://opticnet_container:2000/api/ai-toolkit/ [39m
+network_operator_container  | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:50:49 [ NetOper MW - Inference ] send to: [34m[ AEYE OpticNet AOT Inference ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mClient Requested AEYE AOT ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:50:49 [ AEYE OpticNet AOT Inference ] send to: [34m[ OpticNet HAL - Inference ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mInitiate AI Inference ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:50:49 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mprocesssed_img: [[[[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   [[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   [[1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    ...
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]
+opticnet_container          |    [1.         1.         1.        ]]
+opticnet_container          | 
+opticnet_container          |   ...
+opticnet_container          | 
+opticnet_container          |   [[0.0745098  0.0745098  0.0745098 ]
+opticnet_container          |    [0.00784314 0.00784314 0.00784314]
+opticnet_container          |    [0.0627451  0.0627451  0.0627451 ]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]
+opticnet_container          | 
+opticnet_container          |   [[0.01960784 0.01960784 0.01960784]
+opticnet_container          |    [0.07843137 0.07843137 0.07843137]
+opticnet_container          |    [0.04313725 0.04313725 0.04313725]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]
+opticnet_container          | 
+opticnet_container          |   [[0.0627451  0.0627451  0.0627451 ]
+opticnet_container          |    [0.04313725 0.04313725 0.04313725]
+opticnet_container          |    [0.00392157 0.00392157 0.00392157]
+opticnet_container          |    ...
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]
+opticnet_container          |    [0.         0.         0.        ]]]] ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:50:49] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | 2024-08-09 12:50:49.924358: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+opticnet_container          | 2024-08-09 12:50:50.229503: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+opticnet_container          | 2024-08-09 12:50:50.230580: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+opticnet_container          | name: Tesla T4 major: 7 minor: 5 memoryClockRate(GHz): 1.59
+opticnet_container          | pciBusID: 0000:00:1e.0
+opticnet_container          | totalMemory: 14.58GiB freeMemory: 14.48GiB
+opticnet_container          | 2024-08-09 12:50:50.230613: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+opticnet_container          | 2024-08-09 12:50:50.562066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+opticnet_container          | 2024-08-09 12:50:50.562109: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+opticnet_container          | 2024-08-09 12:50:50.562120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+opticnet_container          | 2024-08-09 12:50:50.562226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14006 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:00:1e.0, compute capability: 7.5)
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:51:24 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mloaded Model: <keras.engine.training.Model object at 0x7fd380145f98> ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:51:24] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:51:27 [ AI Inference ] send to: [34m[ OpticNet MW - Status ]
+opticnet_container          | [39m[32m[active] [39mmessage: [ [32mpreds: [[4.6706591e-03 9.9532890e-01 4.6126198e-07]] ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:51:27] "[37mPOST /mw/status HTTP/1.1[0m" 200 -
+opticnet_container          | INFO:root:
+opticnet_container          | -----------------------------------------
+opticnet_container          | 2024-08-09 12:51:27 [ AEYE OpticNet AOT Inference ] send to: [34m[ OpticNet HAL - Inference ]
+opticnet_container          | [39m[32m[OpticNet - active] [39mmessage: [ [32mSucceed AI Inference, response : (array([[4.6706591e-03, 9.9532890e-01, 4.6126198e-07]], dtype=float32), ['AMD', 'DME', 'NORMAL']) ][39m
+opticnet_container          | -----------------------------------------
+opticnet_container          | /usr/local/lib/python3.5/dist-packages/werkzeug/filesystem.py:60: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ascii'
+opticnet_container          |   BrokenFilesystemWarning,
+opticnet_container          | INFO:werkzeug:127.0.0.1 - - [09/Aug/2024 12:51:27] "[35m[1mPOST /hal/ai-inference/ HTTP/1.1[0m" 500 -
+opticnet_container          | Traceback (most recent call last):
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2464, in __call__
+opticnet_container          |     return self.wsgi_app(environ, start_response)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2450, in wsgi_app
+opticnet_container          |     response = self.handle_exception(e)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1867, in handle_exception
+opticnet_container          |     reraise(exc_type, exc_value, tb)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 39, in reraise
+opticnet_container          |     raise value
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2447, in wsgi_app
+opticnet_container          |     response = self.full_dispatch_request()
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1953, in full_dispatch_request
+opticnet_container          |     return self.finalize_request(rv)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1968, in finalize_request
+opticnet_container          |     response = self.make_response(rv)
+opticnet_container          |   File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2131, in make_response
+opticnet_container          |     " {rv.__class__.__name__}.".format(rv=rv)
+opticnet_container          | TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a tuple.
+opticnet_container          | INFO:werkzeug:172.18.0.3 - - [09/Aug/2024 12:51:27] "[35m[1mPOST /api/ai-toolkit/ HTTP/1.1[0m" 500 -
+network_operator_container  | 
+network_operator_container  | -----------------------------------------
+network_operator_container  | 2024-08-09 12:51:27 [ NetOper MW - Inference] Send to : [94m[ NetOper MW - Inference ][39m
+network_operator_container  | [31m[error] [31mFailed to Receive Data : request AI Inference to : http://opticnet_container:2000/api/ai-toolkit/ [39m
+network_operator_container  | -----------------------------------------
+network_operator_container  | [09/Aug/2024 12:51:27] [m"POST /mw/ai-inference/ HTTP/1.1" 200 75[0m
+network_operator_container  | [09/Aug/2024 12:51:27,648] - Broken pipe from ('127.0.0.1', 46380)
 network_operator_container  | 
 network_operator_container  | Internal Server Error: /api/ai-network-operator/
 network_operator_container  | Traceback (most recent call last):
@@ -148,4 +866,4 @@ network_operator_container  |     return future.result()
 network_operator_container  |   File "/app/api/views/AEYE_ANO.py", line 94, in aeye_ai_inference_request
 network_operator_container  |     result_from_server = await response_from_server
 network_operator_container  | TypeError: object ClientResponse can't be used in 'await' expression
-network_operator_container  | [09/Aug/2024 11:55:16] [35;1m"POST /api/ai-network-operator/ HTTP/1.1" 500 95749[0m
+network_operator_container  | [09/Aug/2024 12:51:27] [35;1m"POST /api/ai-network-operator/ HTTP/1.1" 500 95845[0m
