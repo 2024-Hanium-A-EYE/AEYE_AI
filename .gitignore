@@ -7,7 +7,7 @@
 
 
 ############################################################
-# PyCche
+# PyCache
 /AEYE_AI/__pycache__/*
 /AEYE_AI/AEYE/__pycache__/*
 /AEYE_AI/AEYE_APPLICATION/__pycache__/*
@@ -33,10 +33,11 @@
 /Docker/build.log
 
 ############################################################
-# Weight File
+# Image and Weight File
 /AEYE_Network_Operator/media/images/*
 /AEYE_Network_Operator/mw/views/weight/*.h5
 /AEYE_Network_Operator/mw/views/images/*
+/AEYE_Network_Operator/views/images/*
 /AEYE_AI/tmp_chunk/*
 
 
