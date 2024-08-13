@@ -10,6 +10,7 @@ from datetime import datetime
 import requests
 import os
 import hashlib
+import AEYE_LangChain as LLM
 
 
 def print_log(status, whoami , mw , message):
@@ -57,8 +58,10 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
             response_from_server = aeye_ai_inference_request(image)
             
             #####################################################
-            message = "Client Sent Invalid Data"
-            data = aeye_create_json_data(message)
+            message_server = response_from_server.get('message')
+            llm_response   = LLM.aeye_langchain(message_server)
+            data = aeye_create_json_data(llm_response)
+
             return Response(data, status=status.HTTP_200_OK)
            #####################################################
         else:
@@ -163,7 +166,7 @@ def calculate_hash(data):
 
 
 
-def aeye_ai_inference_request(image):
+def aeye_ai_inference_request(image)->Response:
     operation = 'Inference'
     
     chunk_size = 5 * 1024 * 1024  # 5MB 
@@ -191,10 +194,10 @@ def aeye_ai_inference_request(image):
                 print_log('active', i_am_mw_infer, i_am_mw_infer, message)
                 #whoami, message = aeye_get_data_from_response(response_data)
                 
-                whoami  = response_data.get('whoami')
-                message = response_data.get('message')
+                i_am_server    = response_data.get('whoami')
+                message_server = response_data.get('message')
                 
-                print_log('active', i_am_mw_infer, i_am_mw_infer, "Succedd to Receive Data : {}".format(message) )
+                print_log('active', i_am_mw_infer, i_am_mw_infer, "Succedd to Receive Data : {}".format(message_server) )
                 data = aeye_create_json_data(message)
 
                 return  Response(data, status=status.HTTP_200_OK)
