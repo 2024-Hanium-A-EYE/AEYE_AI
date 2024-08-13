@@ -19,8 +19,13 @@
 ############################################################
 # Weight File
 /AEYE_Network_Operator/mw/views/weight/*.h5
+/AEYE_AI/tmp_chunk/*
 
 
+############################################################
+# Docker File
+/Docker/build.log
+/Docker/docker-compose.log
 
 ############################################################
 # Python File
