@@ -25,7 +25,7 @@ def print_log(status, whoami, mw, message) :
               Fore.RED + "[AI NetOper - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
 
-mw = 'MW - Test'
+i_am_mw_test = 'MW - Test'
 
 url = 'http://127.0.0.1:2000/api/ai-toolkit/'
 class aeye_test_Viewswets(viewsets.ModelViewSet):
@@ -38,7 +38,7 @@ class aeye_test_Viewswets(viewsets.ModelViewSet):
         if serializer.is_valid() :
             whoami    = serializer.validated_data.get('whoami')
             message   = serializer.validated_data.get('message')
-            print_log('active', whoami, mw, "Succeed to Received Data : {}".format(message))
+            print_log('active', whoami, i_am_mw_test, "Succeed to Received Data : {}".format(message))
 
             response = aeye_ai_test_request()
 
@@ -47,7 +47,7 @@ class aeye_test_Viewswets(viewsets.ModelViewSet):
             else:
                 return response
         else:
-            print_log('error', 'MW - Test', mw, "Failed to Received Data : {}".format(request.data))
+            print_log('error', 'MW - Test', i_am_mw_test, "Failed to Received Data : {}".format(request.data))
 
             message = "Client Sent Invalid Data"
             data = aeye_create_json_data(message)
@@ -63,22 +63,22 @@ def aeye_ai_test_request():
         'message' : 'Request AI Test',
     }
 
-    print_log('active', whoami, mw, "Send Data to : {}".format(url))
+    print_log('active', whoami, i_am_mw_test, "Send Data to : {}".format(url))
     response = requests.post(url, data=data)
 
     if response.status_code==200:
         response_data = response.json()
-        print_log('active', whoami, mw, "Received Data from the Server : {}".format(response_data))
+        print_log('active', whoami, i_am_mw_test, "Received Data from the Server : {}".format(response_data))
         
         whoami  = response_data.get('whoami')
         message = response_data.get('message')
             
-        print_log('active', whoami, mw, "Succedd to Receive Data : {}".format(message) )
+        print_log('active', whoami, i_am_mw_test, "Succedd to Receive Data : {}".format(message) )
         data = aeye_create_json_data(message)
 
         return  Response(data, status=status.HTTP_200_OK)
     else:
-        print_log('error', whoami, mw, "Failed to Receive Data : {}".format(message) )
+        print_log('error', whoami, i_am_mw_test, "Failed to Receive Data : {}".format(message) )
 
         message = "Failed to Get Response For the Server"
         data = aeye_create_json_data(message)
@@ -94,11 +94,11 @@ def aeye_get_data_from_response(reponse):
         if message:
             return whoami, message
         else:
-            print_log('error', 'AEYE NetOper MW Test', mw, "Failed to Receive message from the server : {}"
+            print_log('error', 'AEYE NetOper MW Test', i_am_mw_test, "Failed to Receive message from the server : {}"
                                                                                             .format(message))
             return 400
     else:
-        print_log('error', 'AEYE NetOper MW Test', mw, "Failed to Receive whoami from the server : {}"
+        print_log('error', 'AEYE NetOper MW Test', i_am_mw_test, "Failed to Receive whoami from the server : {}"
                                                                                             .format(whoami))
         return 400
     

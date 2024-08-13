@@ -8,29 +8,29 @@ i_am_mw_status = 'OpticNet MW - Status'
 import logging
 logging.basicConfig(level=logging.INFO)
 
-def print_log(status, whoami, api, message) :
+def print_log(status, whoami, mw, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
     
     if status == "active" :
         logging.info("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + mw + " ]\n" +  Fore.RESET +
               Fore.GREEN + "[active] " + Fore.RESET + "message: [ " + Fore.GREEN + str(message) +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         logging.info("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + mw + " ]\n" +  Fore.RESET +
               Fore.RED + "[error] " + Fore.RESET + "message: [ " + Fore.RED + str(message) +" ]" + Fore.RESET +
               "\n-----------------------------------------")
         
 @mw_status.route('/mw/status', methods = ['POST'])
 def aeye_mw_status() :
 
-    whoami  = request.form.get('whoami')
-    status  = request.form.get('status')
-    message = request.form.get('message')
+    i_am_client    = request.form.get('whoami')
+    status_client  = request.form.get('status')
+    message_client = request.form.get('message')
 
-    print_log('active', whoami, i_am_mw_status, message)
+    print_log('active', i_am_client, i_am_mw_status, message_client)
 
     return jsonify({'Status' :"good"}), 200
 

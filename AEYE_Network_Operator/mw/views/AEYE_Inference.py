@@ -10,6 +10,7 @@ from datetime import datetime
 import requests
 import os
 import hashlib
+import AEYE_LangChain as LLM
 
 
 def print_log(status, whoami , mw , message):
@@ -28,7 +29,7 @@ def print_log(status, whoami , mw , message):
               Fore.RED + "[error] " + Fore.RED + message +" " + Fore.RESET +
               "\n-----------------------------------------")
 
-mw = 'NetOper MW - Inference'
+i_am_mw_infer = 'NetOper MW - Inference'
 
 server_url   = 'http://opticnet_container:2000'
 url_ai       = '/api/ai-toolkit/'
@@ -45,32 +46,33 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
         form=aeye_image_form(request.POST, request.FILES)
 
         if serializer.is_valid() :
-            whoami    = serializer.validated_data.get('whoami')
-            message   = serializer.validated_data.get('message')
+            whoami_client       = serializer.validated_data.get('whoami')
+            message_from_client = serializer.validated_data.get('message')
             
             if form.is_valid() :
                 form.save()
             
-            print_log('active', whoami, mw, "MW - Inference received message : {}".format(message))
+            print_log('active', whoami_client, i_am_mw_infer, "MW - Inference received message : {}".format(message_from_client))
 
             image = request.FILES.get('image')
-            response = aeye_ai_inference_request(image)
+            response_from_server = aeye_ai_inference_request(image)
             
             #####################################################
-            message = "Client Sent Invalid Data"
-            data = aeye_create_json_data(message)
+            message_server = response_from_server.get('message')
+            llm_response   = LLM.aeye_langchain(message_server)
+            data = aeye_create_json_data(llm_response)
+
             return Response(data, status=status.HTTP_200_OK)
            #####################################################
         else:
-            print_log('error', 'MW - Inference', mw, "Failed to Received Data : {}".format(request.data))
+            print_log('error', i_am_mw_infer, i_am_mw_infer, "Received Invalid Data : {}".format(serializer.errors))
 
             message = "Client Sent Invalid Data"
             data = aeye_create_json_data(message)
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
-def aeye_upload_image_in_chunks(file_path, chunk_size):
-    whoami = 'NetOper MW Inference'
+def aeye_upload_data(file_path, chunk_size):
 
     file_name = file_path.split('/')[-1]
     file_size = os.path.getsize(file_path)
@@ -81,7 +83,7 @@ def aeye_upload_image_in_chunks(file_path, chunk_size):
     
     message  = 'check server status : {}{}'.format(server_url, url_start)
     metadata = {
-        'whoami'    : whoami,
+        'whoami'    : i_am_mw_infer,
         'message'   : message,
         'file_name'  : file_name,
         'file_size' : file_size,
@@ -89,19 +91,19 @@ def aeye_upload_image_in_chunks(file_path, chunk_size):
     }
     
     # Request for TCP Protocol.
-    print_log('active', whoami, mw, message)
+    print_log('active', i_am_mw_infer, i_am_mw_infer, message)
     response = requests.post("{}{}".format(server_url, url_start), data=metadata)
     if response.status_code != 200:
         message = 'Failed to receive ok from : {}{}'.format(server_url, url_start)
         data = {
-            'whoami'  : whoami,
+            'whoami'  : i_am_mw_infer,
             'message' : message
         }
-        print_log('error', whoami, mw, message)
+        print_log('error', i_am_mw_infer, i_am_mw_infer, message)
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
     
     message = 'server is ok : {}{}'.format(server_url, url_start)
-    print_log('active', whoami, mw, message)
+    print_log('active', i_am_mw_infer, i_am_mw_infer, message)
 
     # Split File into chunks
     with open(file_path, 'rb') as tmp_file:
@@ -113,7 +115,7 @@ def aeye_upload_image_in_chunks(file_path, chunk_size):
             chunk_hash=calculate_hash(chunk)
             files={'file' : (file_name, chunk)}
             data={
-                'whoami'      : whoami,
+                'whoami'      : i_am_mw_infer,
                 'message'     : 'send files in chunk',
                 'chunk_index' : chunk_index,
                 'chunk_hash'  : chunk_hash
@@ -122,7 +124,7 @@ def aeye_upload_image_in_chunks(file_path, chunk_size):
             
             if response.status_code!=200:
                 data = "Failed to send data to : {}{}".format(server_url, url_upload)
-                print_log('error', whoami, mw, message)
+                print_log('error', i_am_mw_infer, i_am_mw_infer, message)
                 
                 return Response(data, status=status.HTTP_400_BAD_REQUEST)
             
@@ -133,26 +135,26 @@ def aeye_upload_image_in_chunks(file_path, chunk_size):
     # Request Assemble
     message='request to assmble files to : {}{}'.format(server_url, url_assemble)
     data={
-        'whoami'            : whoami,
+        'whoami'            : i_am_mw_infer,
         'message'           : message,
         'file_name'         : file_name,
         'total_chunk_index' : total_chunk_index,
         'total_chunk_hash'  : file_hash
     }
-    response = requests.post("{}{}".format(server_url, url_assemble), data=data)
+    response_from_server = requests.post("{}{}".format(server_url, url_assemble), data=data)
 
-    if response.status_code==200:
-        message='succeed to assemble files from : {}{}'.format(server_url, url_assemble)
+    if response_from_server.status_code==200:
+        message_to_client='succeed to assemble files from : {}{}'.format(server_url, url_assemble)
         data={
-            'whoami'  : whoami,
-            'message' : message
+            'whoami'  : i_am_mw_infer,
+            'message' : message_to_client
         }
         return Response(data=data, status=status.HTTP_200_OK)
     else:
-        message='Failed to assemble files from : {}{}'.format(server_url, url_assemble)
+        message_to_client='Failed to assemble files from : {}{}'.format(server_url, url_assemble)
         data={
-            'whoami'  : whoami,
-            'message' : message
+            'whoami'  : i_am_mw_infer,
+            'message' : message_to_client
         }
         return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
             
@@ -164,52 +166,51 @@ def calculate_hash(data):
 
 
 
-def aeye_ai_inference_request(image):
-    whoami    = 'NetOper MW Inference'
+def aeye_ai_inference_request(image)->Response:
     operation = 'Inference'
     
     chunk_size = 5 * 1024 * 1024  # 5MB 
 
     img_file_path = os.path.join(os.path.dirname(__file__), 'images', image.name)
-    response_image  = aeye_upload_image_in_chunks(file_path=img_file_path, chunk_size=chunk_size)
+    response_image  = aeye_upload_data(file_path=img_file_path, chunk_size=chunk_size)
     
     h5_file_path = os.path.join(os.path.dirname(__file__), 'weight', 'Srinivasan2014.h5')
-    response_weight = aeye_upload_image_in_chunks(h5_file_path, chunk_size=chunk_size)
+    response_weight = aeye_upload_data(h5_file_path, chunk_size=chunk_size)
 
     if response_image.status_code==200:
         if response_weight.status_code==200:
             message='request AI Inference to : {}{}'.format(server_url, url_ai)
             data = {
-                'whoami'    : whoami,
+                'whoami'    : i_am_mw_infer,
                 'operation' : operation,
                 'message'   : message,
             }
-            print_log('active', whoami, mw, message)
+            print_log('active', i_am_mw_infer, i_am_mw_infer, message)
             response = requests.post("{}{}".format(server_url, url_ai), data=data)
 
             if response.status_code==200:
                 response_data = response.json()
                 message="Received Data from the Server : {}".format(response_data)
-                print_log('active', whoami, mw, message)
+                print_log('active', i_am_mw_infer, i_am_mw_infer, message)
                 #whoami, message = aeye_get_data_from_response(response_data)
                 
-                whoami  = response_data.get('whoami')
-                message = response_data.get('message')
+                i_am_server    = response_data.get('whoami')
+                message_server = response_data.get('message')
                 
-                print_log('active', whoami, mw, "Succedd to Receive Data : {}".format(message) )
+                print_log('active', i_am_mw_infer, i_am_mw_infer, "Succedd to Receive Data : {}".format(message_server) )
                 data = aeye_create_json_data(message)
 
                 return  Response(data, status=status.HTTP_200_OK)
             else:
-                print_log('error', whoami, mw, "Failed to Receive Data : {}".format(message) )
+                print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive Data : {}".format(message) )
 
                 message = 'Failed to Get Response For the Server'
                 data = aeye_create_json_data(message)
                 return Response(data, status=status.HTTP_400_BAD_REQUEST)
         else:
-            print_log('error', whoami, mw, "Failed to Create Data : {}".format(files) )
+            print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Upload Weight")
 
-            message = 'Failed to Add image and files to Json files'
+            message = 'Failed to Upload image and files to Json files'
             data = aeye_create_json_data(message)
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
     else:
@@ -226,11 +227,11 @@ def aeye_create_json_files(whoami, image):
             'image' : (image.name, image.read(), image.content_type),
             'weight': ('model.h5', h5_file, 'application/octet-stream'),
         }
-        print_log('active', whoami, mw, "Succeeded to add image and h5 files to JSON files")
+        print_log('active', i_am_mw_infer, i_am_mw_infer, "Succeeded to add image and h5 files to JSON files")
         return files
     except Exception as e:
         message='Failed to add image and h5 files to JSON files: {}'.format(str(e))
-        print_log('error', whoami, mw, message)
+        print_log('error', i_am_mw_infer, i_am_mw_infer, message)
         return 400
 
 
@@ -243,11 +244,11 @@ def aeye_get_data_from_response(reponse):
         if message:
             return whoami, message
         else:
-            print_log('error', 'AEYE NetOper MW Inference', mw, "Failed to Receive message from the server : {}"
+            print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive message from the server : {}"
                                                                                             .format(message))
             return 400
     else:
-        print_log('error', 'AEYE NetOper MW Inference', mw, "Failed to Receive whoami from the server : {}"
+        print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive whoami from the server : {}"
                                                                                             .format(whoami))
         return 400
     

@@ -28,3 +28,9 @@ colorama
 
 # pillow
 pillow
+
+asyncio
+aiohttp
+
+langchain
+langchain_community

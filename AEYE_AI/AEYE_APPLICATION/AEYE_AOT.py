@@ -5,7 +5,8 @@ from datetime import datetime
 import requests
 import io
 import os
-import httpx
+import asyncio
+import aiohttp
 
 
 api_aot = Blueprint('application_layer_AOT', __name__)
@@ -24,29 +25,15 @@ def print_log(status, whoami, api, message) :
     if status == "active" :
         logging.info("\n-----------------------------------------\n"   + 
               current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
-              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
+              Fore.GREEN + "[active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         logging.info("\n-----------------------------------------\n"   + 
               current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
-              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
+              Fore.RED + "[error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
-    '''
-def print_log(status, whoami, api, message) :
-    now = datetime.now()
-    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-    if status == "active" :
-        print("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
-              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
-              "\n-----------------------------------------")
-    elif status == "error" :
-        print("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
-              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
-              "\n-----------------------------------------")
-    '''
+i_am_api_aot      = 'AEYE OpticNet AOT Inference'
 
 @api_aot.route('/api/ai-toolkit/', methods = ['POST'])
 def aeye_ai_operation_toolkit() :
@@ -54,33 +41,40 @@ def aeye_ai_operation_toolkit() :
     whoami      = request.form.get('whoami')
     operation   = request.form.get('operation')
     message     = request.form.get('message')
-    image_file  = request.files.get('image')
     
-    print_log('active', whoami, "AOT - Inference", "Client Requested AEYE AOT")
-    whoami      = 'AEYE OpticNet AOT Inference'
+    print_log('active', whoami, i_am_api_aot, "Client Requested AEYE AOT")
 
     if operation == 'Inference' :
-
         
-        response = aeye_ai_inference_reqeuest(whoami)
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        respons = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami))
 
-        ##################################################
-        data={
-            'whoami' : whoami,
-            'message': "HELLO"
-        }
-        return(data), 200
+        if respons.status_code==200:
+                
+            ##################################################
+            data={
+                'whoami' : i_am_api_aot,
+                'message': "HELLO"
+            }
+            return(data), 200
         # return response
+        else:
+            data={
+                'whoami' : i_am_api_aot,
+                'message': "BAD"
+            }
+            return(data), 200
     ##################################################
     
     elif operation == 'Test':
         pass
-        response = aeye_ai_test_request(whoami, message)
+        response = aeye_ai_test_request(i_am_api_aot, message)
         return response
     
     elif operation == 'Train':
         pass
-        response = aeye_ai_train_request(whoami, message)
+        response = aeye_ai_train_request(i_am_api_aot, message)
         return response
     else:
         return jsonify({"error": "Invalid operation"}), 400
@@ -89,34 +83,42 @@ def aeye_ai_operation_toolkit() :
     
 
 
-
-
-async def aeye_ai_inference_reqeuest(whoami):
+async def aeye_ai_inference_reqeuest(client_whoami):
     url = 'http://127.0.0.1:2000/hal/ai-inference/'
-    api = "AOT - Inference"    
             
     data={
-        'whoami' : api,
+        'whoami' : i_am_api_aot,
         'message': "request AI Inference"
     }
 
-    async with httpx.AsyncClient() as client:
-        response = await client.post(url, data=data)
+    async with aiohttp.ClientSession() as session:
+         async with session.post(url, data=data) as response:
+            result = await response
 
-    if response.status_code == 200 :
-        print_log('active', whoami, api, 'Succeed to Send Data To Client')
-        return jsonify({"whoami": 'OpticNet AOT', 'message' : "Succeed to receive Data from AI"}), 200
+    if result.status_code == 200 :
+        message='Succeed to receive Data from AI'
+        data={
+            'whoami' : i_am_api_aot,
+            'message':message
+        }
+
+        print_log('active', client_whoami, i_am_api_aot, message)
+        return jsonify(data), 200
 
     elif response.status_code == 400 :
-        print_log('error', whoami, api, 'Failed to receive Data from AI')
-        return jsonify({"error": "Failed Operating AI Inference"}), 400
+        message='Failed to receive Data from AI'
+        data={
+            'whoami' : i_am_api_aot,
+            'message': message
+        }
+
+        print_log('error', client_whoami, i_am_api_aot, message)
+        return jsonify({data}), 400
     else:
-        print_log('error', whoami, api, 'Failed to receive Data from AI')
-        return jsonify({"error": "Failed Operating AI Inference"}), 400
+        message='Failed to receive Data from AI'
+        print_log('error', client_whoami, i_am_api_aot, message)
+        return jsonify(data), 400
         
-
-
-
 
 def get_json_file_for_inference(whoami, image_name, image_file, weight_name, weight_file) :
     files = {
