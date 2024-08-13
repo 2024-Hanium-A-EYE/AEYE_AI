@@ -8,6 +8,14 @@
 
 ############################################################
 # PyCche
+/AEYE_AI/__pycache__/*
+/AEYE_AI/AEYE/__pycache__/*
+/AEYE_AI/AEYE_APPLICATION/__pycache__/*
+/AEYE_AI/AEYE_HAL/__pycache__/*
+/AEYE_AI/AEYE_MW/__pycache__/*
+/AEYE_AI/config/__pycache__/*
+
+
 /AEYE_Network_Operator/AEYE_Network_Operator/__pycache__/*
 
 /AEYE_Network_Operator/api/__pycache__/*
