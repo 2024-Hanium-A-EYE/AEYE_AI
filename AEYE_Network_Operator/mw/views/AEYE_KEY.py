@@ -1,5 +1,5 @@
 
-API=""
+API=
 Template="""
     한국어로 해석해서 답변해줘.
     You are an experienced ophthalmologist. You will receive a keyword related to eye health or eye diseases. Based on this keyword, provide the following:
