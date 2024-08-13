@@ -4,7 +4,7 @@ from datetime import datetime
 from colorama import Fore, Back, Style
 import tempfile
 import os
-from AEYE_HAL.AEYE_Driver import inference
+from AEYE_HAL.AEYE_Driver import aeye_inference as inference
 
 hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 
@@ -78,7 +78,7 @@ def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
 
         if weight_file_path:
             
-            response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
+            response = inference.aeye_inference(image_file_path, weight_file_path, 'Srinivasan2014')
             return response
 
         else:
@@ -119,4 +119,3 @@ def aeye_delete_buffer(whoami, file_name, tmp_file_path):
         print("Error: {}".format(e.strerror))
         print_log('active', whoami, inference_hal, "Deleted Temporary File : {}"
                                                                     .format(file_name))
-
