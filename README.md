@@ -8,6 +8,13 @@ Django에 LangChain을 결합하여 AI가 추론한 결과를 GPT가 받아 사�
 
 AEYE AI 드라이버는 Docker를 통해 어느 환경에서나 제약 없이 동작할 수 있도록 설계되었습니다. 이번 프로젝트에서는 AWS에서 EC2 인스턴스를 생성하고, Route 53에서 도메인을 구매하여 AI 서버와 도메인을 연결하였으며, EC2 G4 인스턴스를 사용하여 Nvidia T4 그래픽 카드에서 동작하는 것을 확인하였습니다
 
+AI 드라이버는 Application Layer, MiddleWare, HAL, Software Package로 구성되어 있습니다.
+
+<p align="center">
+  <img src="image/architecture_AI.png" alt="Centered Image" style="width:50%;"/>
+</p>
+
+
 ---
 ### AEYE 란?
 AEYE는 AI를 통해 안저 질환을 구별하는 플랫폼입니다. OCT 이미지를 업로드하면, AI가 해당 이미지를 기반으로 추론하고, GPT를 활용하여 더 자세한 질환 판단 소견서를 작성합니다. AEYE는 이 서비스가 원활하게 동작할 수 있도록 웹 서버와 AI 서버를 분리하였으며, AI 서버에서는 GPU를 사용하여 이미지를 학습하고 추론합니다. AI 서버는 GPT와 연결되어 있어, AI가 추론한 키워드를 바탕으로 보다 상세한 안저 질환 소견서를 작성할 수 있습니다.  
