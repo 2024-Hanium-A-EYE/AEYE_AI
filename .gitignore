@@ -1,4 +1,13 @@
-/AEYE_Network_Operator/mw/views/weight/*.h5
+############################################################
+# AEYE AI Driver Gitignore
+
+
+
+############################################################
+
+
+############################################################
+# PyCche
 /AEYE_Network_Operator/media/images/*
 /AEYE_Network_Operator/__pycache__/*
 /AEYE_Network_Operator/AEYE/__pycache__/*
@@ -6,3 +15,15 @@
 /AEYE_Network_Operator/AEYE/AEYE_HAL/__pycache__/*
 /AEYE_Network_Operator/AEYE/config/__pycache__/*
 /Docker/build.log
+
+############################################################
+# Weight File
+/AEYE_Network_Operator/mw/views/weight/*.h5
+
+
+
+############################################################
+# Python File
+/AEYE_Network_Operator/mw/views/AEYE_KEY.py
+
+
