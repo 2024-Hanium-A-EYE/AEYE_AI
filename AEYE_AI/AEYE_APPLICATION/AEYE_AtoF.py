@@ -31,22 +31,6 @@ def print_log(status, whoami, api, message) :
               current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
               Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
-    '''
-def print_log(status, whoami, api, message) :
-    now = datetime.now()
-    current_time = now.strftime("%Y-%m-%d %H:%M:%S")
-
-    if status == "active" :
-        print("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
-              Fore.GREEN + "[OpticNet - active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
-              "\n-----------------------------------------")
-    elif status == "error" :
-        print("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
-              Fore.RED + "[OpticNet - error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
-              "\n-----------------------------------------")
-    '''
 
 i_am_AtoF='AEYE OpticNet API AtoF'
 
