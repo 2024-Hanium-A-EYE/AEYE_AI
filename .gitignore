@@ -12,6 +12,9 @@
 /AEYE_AI/AEYE/__pycache__/*
 /AEYE_AI/AEYE_APPLICATION/__pycache__/*
 /AEYE_AI/AEYE_HAL/__pycache__/*
+/AEYE_AI/AEYE_HAL/AEYE_Driver/__pycache__/*
+/AEYE_AI/AEYE_HAL/AEYE_Driver/src/__pycache__/*
+
 /AEYE_AI/AEYE_MW/__pycache__/*
 /AEYE_AI/config/__pycache__/*
 
