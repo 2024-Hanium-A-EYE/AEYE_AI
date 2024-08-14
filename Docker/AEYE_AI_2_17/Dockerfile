@@ -11,7 +11,7 @@ FROM tensorflow/tensorflow:2.17.0-gpu
 #############################################################
 # Install Dependencies
 
-RUN pip install pycm==1.9 matplotlib sklearn
+RUN pip install pycm==1.9 matplotlib scikit-learn
 
 RUN pip install --upgrade pip
 RUN pip install opencv-python
@@ -26,7 +26,7 @@ RUN apt-get install -y libgl1-mesa-glx --fix-missing
 WORKDIR /app/AEYE_AI
 COPY /AEYE_AI/ /app/AEYE_AI/
 
-COPY /Docker/AEYE_AI/dependencies.txt /app/AEYE_AI
+COPY /Docker/AEYE_AI_2_17/dependencies.txt /app/AEYE_AI
 RUN pip install -r dependencies.txt
 
 #############################################################

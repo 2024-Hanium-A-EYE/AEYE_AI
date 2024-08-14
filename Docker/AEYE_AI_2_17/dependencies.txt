@@ -16,10 +16,7 @@ python-dotenv
 
 # requests
 requests
-
-pycm==1.9
-matplotlib
-sklearn
+markupsafe==2.0.1
 
 aiohttp
 asyncio

@@ -22,7 +22,7 @@ services:
     container_name: opticnet_container
     build:
       context: ..
-      dockerfile: Docker/AEYE_AI/Dockerfile
+      dockerfile: Docker/AEYE_AI_2_17/Dockerfile
     ports:
     - "2000:2000"
     - "6006:6006"
