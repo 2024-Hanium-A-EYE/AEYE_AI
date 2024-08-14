@@ -10,7 +10,7 @@ from datetime import datetime
 import requests
 import os
 import hashlib
-import AEYE_LangChain as LLM
+from .AEYE_LangChain import aeye_langchain
 
 
 def print_log(status, whoami , mw , message):
