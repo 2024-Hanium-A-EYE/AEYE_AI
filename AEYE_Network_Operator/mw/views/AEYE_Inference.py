@@ -59,9 +59,13 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
             
             #####################################################
             message_server = response_from_server.get('message')
-            llm_response   = LLM.aeye_langchain(message_server)
-            data = aeye_create_json_data(llm_response)
-
+            data={
+                'whoami' : i_am_mw_infer,
+                'message': message_server
+            }
+            #llm_response   = LLM.aeye_langchain(message_server)
+            #data = aeye_create_json_data(llm_response)
+            
             return Response(data, status=status.HTTP_200_OK)
            #####################################################
         else:

@@ -1,5 +1,5 @@
 from langchain import OpenAI
-from AEYE_KEY import aeye_key
+from .AEYE_KEY import aeye_key as key
 import os
 
 
