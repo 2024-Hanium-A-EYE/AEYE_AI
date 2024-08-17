@@ -1,3 +1,4 @@
+"""
 from langchain import OpenAI
 from .AEYE_KEY import aeye_key as key
 import os
@@ -12,4 +13,4 @@ def aeye_langchain(dissease : str)-> str :
     
 
     return llm.invoke(key.PROMPT + "Disease : {}".format(dissease))
-    
+"""
