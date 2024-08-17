@@ -28,6 +28,10 @@ def print_log(status, whoami, api, message) :
               Fore.RED + "[error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
         
+def print_log_to_maintainer():
+    pass
+
+
 
 UPLOAD_FOLDER = 'tmp_chunk'
 
@@ -77,17 +81,20 @@ def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
     if image_file_path:
 
         if weight_file_path:
-            
+            start_time = datetime.datetime.now()
             response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
-            return response
+            end_time = datetime.datetime.now()
+            time_difference = end_time - start_time
+            print_log('active', inference_hal, inference_hal, "AI Inference Time : {}".format(time_difference))
 
+            return response
         else:
             print_log('error', whoami, inference_hal, 'No Image file path')
             return jsonify({"error": "Invalid operation"}), 400
-
     else:
         print_log('error', whoami, inference_hal, 'No Weight file path.')
         return jsonify({"error": "Invalid operation"}), 400
+
 
 
 def aeye_create_buffer(whoami, image_file, weight_file):
