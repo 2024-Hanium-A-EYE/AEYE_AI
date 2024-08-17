@@ -5,7 +5,7 @@ from colorama import Fore, Back, Style
 import tempfile
 import os
 from AEYE_HAL.AEYE_Driver import inference as inference
-
+import requests
 hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 
 
@@ -13,24 +13,35 @@ hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 import logging
 logging.basicConfig(level=logging.INFO)
 
-def print_log(status, whoami, api, message) :
+def print_log(status, whoami, hal, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
     
     if status == "active" :
         logging.info("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.GREEN + "[active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         logging.info("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.RED + "[error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
         
-def print_log_to_maintainer():
-    pass
+def print_log_to_maintainer(status, whoami, message):
+    url = 'http://127.0.0.1:2000/api/log-printer/'
+    data={
+        'whoami'    : whoami,
+        'operation' : 'Maintainer Server',
+        'status'    : status,
+        'message'   : message
+    }
+    response = requests.post(url, data=data)
 
+    if response.status_code == 200:
+        pass
+    else:
+        pass
 
 
 UPLOAD_FOLDER = 'tmp_chunk'
@@ -85,8 +96,9 @@ def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
             response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
             end_time = datetime.datetime.now()
             time_difference = end_time - start_time
+            
             print_log('active', inference_hal, inference_hal, "AI Inference Time : {}".format(time_difference))
-
+            print_log_to_maintainer('active', inference_hal, "Inference finished : {}".format(response))
             return response
         else:
             print_log('error', whoami, inference_hal, 'No Image file path')
