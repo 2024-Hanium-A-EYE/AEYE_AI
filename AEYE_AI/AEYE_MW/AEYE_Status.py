@@ -41,7 +41,7 @@ def check_valid_data(whoami, status, message) :
     if whoami :
         if status:
             if message :
-                return 200
+                url = ''
             else :
                 print_log('error', whoami, mw_status, "Failed to Receive message")
                 return 400
