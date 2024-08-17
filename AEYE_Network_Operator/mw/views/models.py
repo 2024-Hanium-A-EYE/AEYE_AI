@@ -27,7 +27,8 @@ class aeye_test_models (models.Model):
     
 class aeye_ptm_models (models.Model):
     whoami    = models.CharField(max_length=20)
-    message   = models.CharField(max_length=20)
+    message   = models.CharField(max_length=10000)
+    status    = models.CharField(max_length=20)
     
     def __str__(self):
         return self.name

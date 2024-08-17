@@ -26,7 +26,6 @@ def print_log(status, whoami, mw, message) :
 
 i_am_mw_ptm = 'MW - PtM'
 
-url = 'http://127.0.0.1:3000/hal/print-log/'
 class aeye_ptm_Viewswets(viewsets.ModelViewSet):
     queryset=aeye_ptm_models.objects.all().order_by('id')
     serializer_class=aeye_ptm_serializers
@@ -37,14 +36,26 @@ class aeye_ptm_Viewswets(viewsets.ModelViewSet):
         if serializer.is_valid() :
             i_am_client    = serializer.validated_data.get('whoami')
             message_form_client   = serializer.validated_data.get('message')
+            status_client         = serializer.validated_data.get('status')
+
             print_log('active', i_am_client, i_am_mw_ptm, "Succeed to Received Data : {}".format(message_form_client))
 
-            response_from_server = aeye_print_to_maintainer_request()
+            response_from_server = aeye_print_to_maintainer_request(i_am_client, message_form_client, status_client)
 
             if response_from_server.status_code==200:
-                return response_from_server
+                message='Succed to send data to HAL PtM'
+                data={
+                    'whoami' : i_am_mw_ptm,
+                    'message': message
+                }
+                return Response(data, status=status.HTTP_200_OK)
             else:
-                return response_from_server
+                message='Failed to send data to HAL PtM'
+                data={
+                    'whoami' : i_am_mw_ptm,
+                    'message': message
+                }
+                return Response(data, status=status.HTTP_400_BAD_REQUEST)
         else:
             print_log('error', i_am_mw_ptm, i_am_mw_ptm, "Failed to Received Data : {}".format(request.data))
 
@@ -54,10 +65,12 @@ class aeye_ptm_Viewswets(viewsets.ModelViewSet):
 
 
 
-def aeye_print_to_maintainer_request():
+def aeye_print_to_maintainer_request(whoami, message, status):
+    url = 'http://127.0.0.1:3000/hal/print-log/'
     data = {
-        'whoami'  : i_am_mw_ptm,
-        'message' : 'Request AI Test',
+        'whoami'  : whoami,
+        'message' : message,
+        'status'  : status
     }
 
     print_log('active', i_am_mw_ptm, i_am_mw_ptm, "Send Data to : {}".format(url))

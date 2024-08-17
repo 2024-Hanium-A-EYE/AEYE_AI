@@ -5,4 +5,4 @@ class aeye_print_log_serializers(serializers.ModelSerializer):
     
     class Meta:
         model = aeye_print_log_models
-        fields = ['whoami', 'message']
+        fields = ['whoami', 'message', 'status']
