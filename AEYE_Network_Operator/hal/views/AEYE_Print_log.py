@@ -61,7 +61,8 @@ def aeye_print_to_maintainer_request(whoami, message, status):
     data = {
         'whoami' : whoami,
         'message' : message,
-        'status'  : status
+        'status'  : status,
+        'operation': 'print_log'
     }
 
     print_log('active', i_am_hal_PtM, i_am_hal_PtM, "Send Data to : {}".format(url))
