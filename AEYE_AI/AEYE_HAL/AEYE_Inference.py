@@ -66,7 +66,11 @@ def aeye_ai_inference() :
 
     print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
                                                                                 .format(response))  
-    return response, 200
+    data={
+        'whoami' : inference_hal,
+        'message': response,
+        }
+    return jsonify(data), 200
 
 
 
