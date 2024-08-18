@@ -64,11 +64,13 @@ def inference(img,weights,dataset):
     print_log('good', message)
     
     preds = model.predict(processsed_img,batch_size=None,steps=1)
-    
-    message='preds: {}'.format(preds)
+    predicted_class_index = preds.argmax(axis=-1)[0] 
+    predicted_class = classes[predicted_class_index]
+    message = 'Predicted class: {}'.format(predicted_class)
     print_log('good', message)
-    
-    return preds, classes
+
+
+    return predicted_class
     
     
     
