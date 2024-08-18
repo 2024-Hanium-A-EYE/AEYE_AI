@@ -75,7 +75,7 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
                 'whoami' : i_am_api_ano,
                 'message': message
             }
-            print_log('active', i_am_client, i_am_api_ano, message)
+            print_log('error', i_am_api_ano, i_am_api_ano, message)
 
             return Response(data, status = status.HTTP_400_BAD_REQUEST)
     

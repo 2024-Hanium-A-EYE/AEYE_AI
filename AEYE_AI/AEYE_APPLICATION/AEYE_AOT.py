@@ -41,14 +41,15 @@ def aeye_ai_operation_toolkit() :
     whoami      = request.form.get('whoami')
     operation   = request.form.get('operation')
     message     = request.form.get('message')
-    
+    image_name  = request.form.get('image_name')
+
     print_log('active', whoami, i_am_api_aot, "Client Requested AEYE AOT")
 
     if operation == 'Inference' :
         
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        respons = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami))
+        respons = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami, image_name))
 
         if respons.status_code==200:
                 
@@ -83,12 +84,13 @@ def aeye_ai_operation_toolkit() :
     
 
 
-async def aeye_ai_inference_reqeuest(client_whoami):
+async def aeye_ai_inference_reqeuest(client_whoami, image_name):
     url = 'http://127.0.0.1:2000/hal/ai-inference/'
             
     data={
         'whoami' : i_am_api_aot,
-        'message': "request AI Inference"
+        'message': "request AI Inference",
+        'image_name': image_name,
     }
 
     async with aiohttp.ClientSession() as session:

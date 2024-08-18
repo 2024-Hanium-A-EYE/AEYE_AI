@@ -50,6 +50,7 @@ inference_hal = 'OpticNet HAL - Inference'
 @hal_ai_inference.route('/hal/ai-inference/', methods = ['POST'])
 def aeye_ai_inference() :
     whoami      = request.form.get('whoami')
+    image_name  = request.form.get('image_name')
 
     # Read Data From local
     
@@ -57,7 +58,7 @@ def aeye_ai_inference() :
     weight_file_name='Srinivasan2014.h5'
     weight_file_path=os.path.join(UPLOAD_FOLDER, weight_file_name)  
     
-    img_file_name='CNV-1569-1.jpeg'
+    img_file_name=image_name
     img_file_path=os.path.join(UPLOAD_FOLDER, img_file_name)
 
     print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
@@ -92,9 +93,9 @@ def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
     if image_file_path:
 
         if weight_file_path:
-            start_time = datetime.datetime.now()
+            start_time = datetime.now()
             response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
-            end_time = datetime.datetime.now()
+            end_time = datetime.now()
             time_difference = end_time - start_time
             
             print_log('active', inference_hal, inference_hal, "AI Inference Time : {}".format(time_difference))

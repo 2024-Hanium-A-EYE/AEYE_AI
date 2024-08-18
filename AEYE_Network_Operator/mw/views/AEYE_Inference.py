@@ -188,6 +188,7 @@ def aeye_ai_inference_request(image)->Response:
                 'whoami'    : i_am_mw_infer,
                 'operation' : operation,
                 'message'   : message,
+                'image_name': image.name
             }
             print_log('active', i_am_mw_infer, i_am_mw_infer, message)
             response = requests.post("{}{}".format(server_url, url_ai), data=data)
