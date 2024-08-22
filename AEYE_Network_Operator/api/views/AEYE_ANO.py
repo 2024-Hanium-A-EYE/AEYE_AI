@@ -16,8 +16,8 @@ def print_log(status, whoami, api, message) :
 
     if status == "active" :
         print("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to : " + Fore.LIGHTBLUE_EX + "[ " + api + " ]" +  
-              Fore.RESET + "\n" + Fore.GREEN + "[active] " +  message + Fore.RESET +
+              current_time + " [ " + str(whoami) + " ] send to : " + Fore.LIGHTBLUE_EX + "[ " + str(api) + " ]" +  
+              Fore.RESET + "\n" + Fore.GREEN + "[active] " +  str(message) + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         print("\n-----------------------------------------\n"   + 
@@ -52,17 +52,13 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
                 asyncio.set_event_loop(loop)
                 response_from_server = loop.run_until_complete(aeye_ai_inference_request(image, url))
                 
-                if response_from_server.status_code==200:
-                    i_am_server, message = aeye_get_data_from_response(response_from_server)
-                    data = aeye_create_json_file(message)
+                print_log('active', i_am_api_ano, i_am_api_ano, response_from_server)
+                data={
+                    'whoami' : i_am_api_ano,
+                    'message': response_from_server,
+                    }
+                return Response(data, status=status.HTTP_200_OK)
 
-                    return Response(data, status=status.HTTP_200_OK)
-                else:
-                    message = 'Failed to Receive Data From Server'
-                    data = aeye_create_json_file(message)
-
-                    return Response(data, status = status.HTTP_400_BAD_REQUEST)
-                
             elif operation_client=='Train':
                 pass
             elif operation_client=='Test':
@@ -75,7 +71,7 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
                 'whoami' : i_am_api_ano,
                 'message': message
             }
-            print_log('active', i_am_client, i_am_api_ano, message)
+            print_log('error', i_am_api_ano, i_am_api_ano, message)
 
             return Response(data, status = status.HTTP_400_BAD_REQUEST)
     
@@ -91,20 +87,10 @@ async def aeye_ai_inference_request(image, url):
         form_data.add_field('message', message)
         form_data.add_field('image', image.read(), filename=image.name, content_type=image.content_type)
         async with session.post(url, data=form_data) as response_from_server:
-            result_from_server = await response_from_server
+            if response_from_server.status == 200:
+                result = await response_from_server.json()
 
-
-    if result_from_server.status_code==200:
-
-        whoami, message = aeye_get_data_from_response(result_from_server)
-        print_log('active', whoami, i_am_api_ano, "received data from : {}".format(url))
-
-        return result_from_server
-    else:
-        message="failed to send data to : {}\n" + \
-                "received message from the server: {}".formaturl, message
-        print_log('error', whoami, i_am_api_ano, message)
-        return result_from_server
+                return result
 
 
 def aeye_get_data_from_response(reponse):

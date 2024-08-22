@@ -31,9 +31,19 @@ def hal_ai_status() :
 
     if validate == 200:
         print_log('active', i_am_client, message_client, i_am_hal_status)
-        return 200
+        message="Succed to print log in {}".format(hal_ai_status)
+        data={
+            'whoami' : i_am_hal_status,
+            'message': message
+        }
+        return jsonify(data), 200
     else:
-        return 400
+        message="Failed to print log in {}".format(hal_ai_status)
+        data={
+            'whoami' : i_am_hal_status,
+            'message': message
+        }
+        return jsonify(data), 400
 
 
 

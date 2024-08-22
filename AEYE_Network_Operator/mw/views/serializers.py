@@ -23,4 +23,4 @@ class aeye_ptm_serializers(serializers.ModelSerializer):
     
     class Meta:
         model = aeye_ptm_models
-        fields = ['whoami', 'message']
+        fields = ['whoami', 'message', 'status']

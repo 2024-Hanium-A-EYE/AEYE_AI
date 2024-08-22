@@ -41,30 +41,22 @@ def aeye_ai_operation_toolkit() :
     whoami      = request.form.get('whoami')
     operation   = request.form.get('operation')
     message     = request.form.get('message')
-    
+    image_name  = request.form.get('image_name')
+
     print_log('active', whoami, i_am_api_aot, "Client Requested AEYE AOT")
 
     if operation == 'Inference' :
         
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        respons = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami))
+        response = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami, image_name))
 
-        if respons.status_code==200:
-                
-            ##################################################
-            data={
-                'whoami' : i_am_api_aot,
-                'message': "HELLO"
+        ai_inference_server = response.get('message')
+        data={
+            'whomai' : i_am_api_aot,
+            'message': ai_iference_server,
             }
-            return(data), 200
-        # return response
-        else:
-            data={
-                'whoami' : i_am_api_aot,
-                'message': "BAD"
-            }
-            return(data), 200
+        return jsonify(data), 200
     ##################################################
     
     elif operation == 'Test':
@@ -83,41 +75,21 @@ def aeye_ai_operation_toolkit() :
     
 
 
-async def aeye_ai_inference_reqeuest(client_whoami):
+async def aeye_ai_inference_reqeuest(client_whoami, image_name):
     url = 'http://127.0.0.1:2000/hal/ai-inference/'
             
     data={
         'whoami' : i_am_api_aot,
-        'message': "request AI Inference"
+        'message': "request AI Inference",
+        'image_name': image_name,
     }
 
     async with aiohttp.ClientSession() as session:
          async with session.post(url, data=data) as response:
-            result = await response
-
-    if result.status_code == 200 :
-        message='Succeed to receive Data from AI'
-        data={
-            'whoami' : i_am_api_aot,
-            'message':message
-        }
-
-        print_log('active', client_whoami, i_am_api_aot, message)
-        return jsonify(data), 200
-
-    elif response.status_code == 400 :
-        message='Failed to receive Data from AI'
-        data={
-            'whoami' : i_am_api_aot,
-            'message': message
-        }
-
-        print_log('error', client_whoami, i_am_api_aot, message)
-        return jsonify({data}), 400
-    else:
-        message='Failed to receive Data from AI'
-        print_log('error', client_whoami, i_am_api_aot, message)
-        return jsonify(data), 400
+             if response.status == 200:
+                 result = await response.json()
+                 
+                 return result 
         
 
 def get_json_file_for_inference(whoami, image_name, image_file, weight_name, weight_file) :

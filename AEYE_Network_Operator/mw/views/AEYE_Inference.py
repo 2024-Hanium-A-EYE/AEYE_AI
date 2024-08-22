@@ -10,7 +10,7 @@ from datetime import datetime
 import requests
 import os
 import hashlib
-import AEYE_LangChain as LLM
+# from .AEYE_LangChain import aeye_langchain
 
 
 def print_log(status, whoami , mw , message):
@@ -59,9 +59,13 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
             
             #####################################################
             message_server = response_from_server.get('message')
-            llm_response   = LLM.aeye_langchain(message_server)
-            data = aeye_create_json_data(llm_response)
-
+            data={
+                'whoami' : i_am_mw_infer,
+                'message': message_server
+            }
+            #llm_response   = LLM.aeye_langchain(message_server)
+            #data = aeye_create_json_data(llm_response)
+            
             return Response(data, status=status.HTTP_200_OK)
            #####################################################
         else:
@@ -184,6 +188,7 @@ def aeye_ai_inference_request(image)->Response:
                 'whoami'    : i_am_mw_infer,
                 'operation' : operation,
                 'message'   : message,
+                'image_name': image.name
             }
             print_log('active', i_am_mw_infer, i_am_mw_infer, message)
             response = requests.post("{}{}".format(server_url, url_ai), data=data)

@@ -4,8 +4,8 @@ from datetime import datetime
 from colorama import Fore, Back, Style
 import tempfile
 import os
-from AEYE_HAL.AEYE_Driver import aeye_inference as inference
-
+from AEYE_HAL.AEYE_Driver import inference as inference
+import requests
 hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 
 
@@ -13,21 +13,36 @@ hal_ai_inference = Blueprint('AEYE_HAL_AI_Inference', __name__)
 import logging
 logging.basicConfig(level=logging.INFO)
 
-def print_log(status, whoami, api, message) :
+def print_log(status, whoami, hal, message) :
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
     
     if status == "active" :
         logging.info("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to: " + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.GREEN + "[active] " + Fore.RESET + "message: [ " + Fore.GREEN + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
     elif status == "error" :
         logging.info("\n-----------------------------------------\n"   + 
-              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + api + " ]\n" +  Fore.RESET +
+              current_time + " [ " + whoami + " ] send to:" + Fore.BLUE + "[ " + hal + " ]\n" +  Fore.RESET +
               Fore.RED + "[error] " + Fore.RESET + "message: [ " + Fore.RED + message +" ]" + Fore.RESET +
               "\n-----------------------------------------")
         
+def print_log_to_maintainer(status, whoami, message):
+    url = 'http://127.0.0.1:2000/api/log-printer/'
+    data={
+        'whoami'    : whoami,
+        'operation' : 'Maintainer Server',
+        'status'    : status,
+        'message'   : message
+    }
+    response = requests.post(url, data=data)
+
+    if response.status_code == 200:
+        pass
+    else:
+        pass
+
 
 UPLOAD_FOLDER = 'tmp_chunk'
 
@@ -35,6 +50,7 @@ inference_hal = 'OpticNet HAL - Inference'
 @hal_ai_inference.route('/hal/ai-inference/', methods = ['POST'])
 def aeye_ai_inference() :
     whoami      = request.form.get('whoami')
+    image_name  = request.form.get('image_name')
 
     # Read Data From local
     
@@ -42,7 +58,7 @@ def aeye_ai_inference() :
     weight_file_name='Srinivasan2014.h5'
     weight_file_path=os.path.join(UPLOAD_FOLDER, weight_file_name)  
     
-    img_file_name='CNV-1569-1.jpeg'
+    img_file_name=image_name
     img_file_path=os.path.join(UPLOAD_FOLDER, img_file_name)
 
     print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
@@ -50,7 +66,11 @@ def aeye_ai_inference() :
 
     print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
                                                                                 .format(response))  
-    return response, 200
+    data={
+        'whoami' : inference_hal,
+        'message': response,
+        }
+    return jsonify(data), 200
 
 
 
@@ -77,17 +97,21 @@ def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
     if image_file_path:
 
         if weight_file_path:
+            start_time = datetime.now()
+            response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
+            end_time = datetime.now()
+            time_difference = end_time - start_time
             
-            response = inference.aeye_inference(image_file_path, weight_file_path, 'Srinivasan2014')
+            print_log('active', inference_hal, inference_hal, "AI Inference Time : {}".format(time_difference))
+            print_log_to_maintainer('active', inference_hal, "Inference finished : {}".format(response))
             return response
-
         else:
             print_log('error', whoami, inference_hal, 'No Image file path')
             return jsonify({"error": "Invalid operation"}), 400
-
     else:
         print_log('error', whoami, inference_hal, 'No Weight file path.')
         return jsonify({"error": "Invalid operation"}), 400
+
 
 
 def aeye_create_buffer(whoami, image_file, weight_file):
