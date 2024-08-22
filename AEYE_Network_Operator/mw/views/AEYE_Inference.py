@@ -50,29 +50,52 @@ class aeye_inference_Viewswets(viewsets.ModelViewSet):
             message_from_client = serializer.validated_data.get('message')
             
             if form.is_valid() :
+                # save image
                 form.save()
             
             print_log('active', whoami_client, i_am_mw_infer, "MW - Inference received message : {}".format(message_from_client))
 
             image = request.FILES.get('image')
-            response_from_server = aeye_ai_inference_request(image)
+            response_server = aeye_ai_inference_request(image)
+
+            if response_server.status_code==200:
+                response_data = response_server.json()
+                i_am_server    = response_data.get('whoami')
+                message_server = response_data.get('message')
+                ai_result      = response_data.get('ai_result')
+
+                gpt_result = aeye_request_gpt(ai_result)
+                ################################################
+                gpt_result = "NONE"
+                ################################################
+                message="Received AI Result : {}".format(ai_result)
+                print_log('active', i_am_mw_infer, i_am_mw_infer, message)
+                
+                data={
+                    'whoami' : i_am_mw_infer,
+                    'message' : message,
+                    'ai_result' : ai_result,
+                    'gpt_result': gpt_result
+                }
+                return  Response(data, status=status.HTTP_200_OK)
+            else:
+                print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive Data : {}".format(message) )
+
+                message = 'Failed to Get Response For the Server'
+                data = {
+                    'whoami' : i_am_mw_infer,
+                    'message': message,
+                }
+                return Response(data, status=status.HTTP_400_BAD_REQUEST)
             
-            #####################################################
-            message_server = response_from_server.get('message')
-            data={
-                'whoami' : i_am_mw_infer,
-                'message': message_server
-            }
-            #llm_response   = LLM.aeye_langchain(message_server)
-            #data = aeye_create_json_data(llm_response)
-            
-            return Response(data, status=status.HTTP_200_OK)
-           #####################################################
         else:
             print_log('error', i_am_mw_infer, i_am_mw_infer, "Received Invalid Data : {}".format(serializer.errors))
 
             message = "Client Sent Invalid Data"
-            data = aeye_create_json_data(message)
+            data = {
+                'whoami' : i_am_mw_infer,
+                'message': message,
+            }
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -170,7 +193,7 @@ def calculate_hash(data):
 
 
 
-def aeye_ai_inference_request(image)->Response:
+def aeye_ai_inference_request(image):
     operation = 'Inference'
     
     chunk_size = 5 * 1024 * 1024  # 5MB 
@@ -193,31 +216,9 @@ def aeye_ai_inference_request(image)->Response:
             print_log('active', i_am_mw_infer, i_am_mw_infer, message)
             response = requests.post("{}{}".format(server_url, url_ai), data=data)
 
-            if response.status_code==200:
-                response_data = response.json()
-                message="Received Data from the Server : {}".format(response_data)
-                print_log('active', i_am_mw_infer, i_am_mw_infer, message)
-                #whoami, message = aeye_get_data_from_response(response_data)
-                
-                i_am_server    = response_data.get('whoami')
-                message_server = response_data.get('message')
-                
-                print_log('active', i_am_mw_infer, i_am_mw_infer, "Succedd to Receive Data : {}".format(message_server) )
-                data = aeye_create_json_data(message)
-
-                return  Response(data, status=status.HTTP_200_OK)
-            else:
-                print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive Data : {}".format(message) )
-
-                message = 'Failed to Get Response For the Server'
-                data = aeye_create_json_data(message)
-                return Response(data, status=status.HTTP_400_BAD_REQUEST)
+            return response
         else:
-            print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Upload Weight")
-
-            message = 'Failed to Upload image and files to Json files'
-            data = aeye_create_json_data(message)
-            return Response(data, status=status.HTTP_400_BAD_REQUEST)
+            pass
     else:
         pass
     
@@ -240,24 +241,5 @@ def aeye_create_json_files(whoami, image):
         return 400
 
 
-def aeye_get_data_from_response(reponse):
-    response_data = reponse.json()
-    whoami = response_data.get('whoami', '')
-    message = response_data.get('message', '')
-
-    if whoami:
-        if message:
-            return whoami, message
-        else:
-            print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive message from the server : {}"
-                                                                                            .format(message))
-            return 400
-    else:
-        print_log('error', i_am_mw_infer, i_am_mw_infer, "Failed to Receive whoami from the server : {}"
-                                                                                            .format(whoami))
-        return 400
-    
-def aeye_create_json_data(message : str):
-    data = {'whoami' : 'AEYE NetOper MW Inference', 'message' : message}
-
-    return data
+def aeye_request_gpt(ai_result):
+    pass

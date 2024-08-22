@@ -46,18 +46,23 @@ def aeye_ai_operation_toolkit() :
     print_log('active', whoami, i_am_api_aot, "Client Requested AEYE AOT")
 
     if operation == 'Inference' :
-        
+        url = 'http://127.0.0.1:2000/hal/ai-inference/'
+
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        response = loop.run_until_complete(aeye_ai_inference_reqeuest(whoami, image_name))
+        server_data = loop.run_until_complete(aeye_ai_inference_reqeuest(url, image_name))
+        
+        i_am_server    = server_data.get('whoami')
+        message_server = server_data.get('message')
+        ai_result   = server_data.get('ai_inference')
 
-        ai_inference_server = response.get('message')
+        message="Succed to Receive data from : {}".format(url)
         data={
-            'whomai' : i_am_api_aot,
-            'message': ai_iference_server,
+            'whomai'    : i_am_api_aot,
+            'message'   : message,
+            'ai_result' : ai_result,
             }
         return jsonify(data), 200
-    ##################################################
     
     elif operation == 'Test':
         pass
@@ -75,9 +80,7 @@ def aeye_ai_operation_toolkit() :
     
 
 
-async def aeye_ai_inference_reqeuest(client_whoami, image_name):
-    url = 'http://127.0.0.1:2000/hal/ai-inference/'
-            
+async def aeye_ai_inference_reqeuest(url, image_name):            
     data={
         'whoami' : i_am_api_aot,
         'message': "request AI Inference",

@@ -61,56 +61,52 @@ def aeye_ai_inference() :
     img_file_name=image_name
     img_file_path=os.path.join(UPLOAD_FOLDER, img_file_name)
 
-    print_log('active', whoami, inference_hal, 'Initiate AI Inference')  
-    response = aeye_ai_inference_reqeuest(whoami, img_file_path, weight_file_path)
+    print_log('active', whoami, inference_hal, 'Initiate AI Inference')
 
-    print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
-                                                                                .format(response))  
-    data={
-        'whoami' : inference_hal,
-        'message': response,
-        }
-    return jsonify(data), 200
-
-
-
-def check_valid_data(whoami, image_file, weight_file):
-    
-    if whoami: 
-        if weight_file:
-            if image_file:
-                return 200
-            else:
-                print_log('error', whoami, inference_hal, ' Not Received Image File: {}'
-                                                                                    .format(image_file))
-                return 400
-        else: 
-            print_log('error', whoami, inference_hal, ' Not Received Weight File: {}'.format(weight_file))
-            return 400
-    else:
-        print_log('error', whoami, inference_hal, ' Not Received whoami: {}'.format(whoami))
-        return 400
-
-
-def aeye_ai_inference_reqeuest(whoami, image_file_path, weight_file_path):
-    
-    if image_file_path:
+    if img_file_path:
 
         if weight_file_path:
-            start_time = datetime.now()
-            response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
-            end_time = datetime.now()
-            time_difference = end_time - start_time
-            
-            print_log('active', inference_hal, inference_hal, "AI Inference Time : {}".format(time_difference))
-            print_log_to_maintainer('active', inference_hal, "Inference finished : {}".format(response))
-            return response
+            response = aeye_ai_inference_reqeuest(img_file_path, weight_file_path)
+
+            print_log('active', whoami, inference_hal, 'Succeed AI Inference, response : {}'
+                                                                                        .format(response))  
+            data={
+                'whoami' : inference_hal,
+                'message': response,
+                'ai_result' : response
+                }
+            return jsonify(data), 200
         else:
-            print_log('error', whoami, inference_hal, 'No Image file path')
-            return jsonify({"error": "Invalid operation"}), 400
+            message='No Image file path'
+            print_log('error', inference_hal, inference_hal, message)
+            data={
+                'whoami' : inference_hal,
+                'message': message,
+            }
+            return jsonify(data), 400
     else:
-        print_log('error', whoami, inference_hal, 'No Weight file path.')
-        return jsonify({"error": "Invalid operation"}), 400
+        message='No Weight file path.'
+        print_log('error', inference_hal, inference_hal, message)
+        data={
+            'whoami' : inference_hal,
+            'message': message,
+        }
+        return jsonify(data), 400
+
+
+def aeye_ai_inference_reqeuest(image_file_path, weight_file_path):
+
+    start_time = datetime.now()
+    response = inference.inference(image_file_path, weight_file_path, 'Srinivasan2014')
+    end_time = datetime.now()
+    time_difference = end_time - start_time
+    
+    print_log('active', inference_hal, inference_hal, "AI Inference Time : {}".format(time_difference))
+    print_log_to_maintainer('active', inference_hal, "Inference finished : {}".format(response))
+    
+    return response
+
+    
 
 
 

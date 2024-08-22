@@ -27,7 +27,6 @@ def print_log(status, whoami, api, message) :
 
 i_am_api_ano = 'NetOper API - ANO'
 
-url = 'http://127.0.0.1:3000/mw/ai-inference/'
 
 class aeye_ano_Viewsets(viewsets.ModelViewSet):
     queryset=aeye_ano_models.objects.all().order_by('id')
@@ -47,16 +46,27 @@ class aeye_ano_Viewsets(viewsets.ModelViewSet):
             
             if operation_client=='Inference' :
                 image = request.FILES.get('image')
+                url = 'http://127.0.0.1:3000/mw/ai-inference/'
 
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
                 response_from_server = loop.run_until_complete(aeye_ai_inference_request(image, url))
                 
-                print_log('active', i_am_api_ano, i_am_api_ano, response_from_server)
+                i_am_server    = response_from_server.get('whoami')
+                message_server = response_from_server.get('message')
+                ai_result      = response_from_server.get('ai_result')
+                gpt_result     = response_from_server.get('gpt_result')
+
+                message = "succed to receive data from : {}".format(url)
+                print_log('active', i_am_api_ano, i_am_api_ano, message)
+                
                 data={
-                    'whoami' : i_am_api_ano,
-                    'message': response_from_server,
+                    'whoami'     : i_am_api_ano,
+                    'message'    : message,
+                    'ai_result'  : ai_result,
+                    'gpt_result' : gpt_result,
                     }
+                
                 return Response(data, status=status.HTTP_200_OK)
 
             elif operation_client=='Train':
@@ -91,29 +101,3 @@ async def aeye_ai_inference_request(image, url):
                 result = await response_from_server.json()
 
                 return result
-
-
-def aeye_get_data_from_response(reponse):
-    response_data = reponse.json()
-    whoami = response_data.get('whoami', '')
-    message = response_data.get('message', '')
-
-    if whoami:
-        if message:
-            return whoami, message
-        else:
-            print_log('error', i_am_api_ano, i_am_api_ano, "Failed to Receive message from the server : {}"
-                                                                                            .format(message))
-            return 400
-    else:
-        print_log('error', i_am_api_ano, i_am_api_ano, "Failed to Receive whoami from the server : {}"
-                                                                                            .format(whoami))
-        return 400
-    
-def aeye_create_json_file(message):
-    data = {
-        'whoami' : i_am_api_ano,
-        'message' : message
-        }
-
-    return data
